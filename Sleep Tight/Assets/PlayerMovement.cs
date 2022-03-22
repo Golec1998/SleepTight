@@ -15,29 +15,42 @@ public class PlayerMovement : MonoBehaviour
 
     [Space]
 
-    public float walkSpeed = 8f;
-    public float walkAcceleration = 50f;
-    public float walkDeacceleration = 20f;
+    public float walkSpeed = 3.5f;
+    public float walkAcceleration = 25f;
+    public float walkDeacceleration = 10f;
 
-    public float runSpeed = 15f;
-    public float runAcceleration = 30f;
-    public float runDeacceleration = 15f;
+    [Space]
 
-    public float combatSpeed = 4f;
-    public float combatDeacceleration = 10f;
-    public float dashSpeed = 20f;
+    public float runSpeed = 7f;
+    public float runAcceleration = 15f;
+    public float runDeacceleration = 8f;
+
+    [Space]
+
+    public float combatSpeed = 2f;
+    public float combatDeacceleration = 5f;
+    public float dashSpeed = 10f;
+
+    [Space]
+
+    public float jumpPower = 6f;
+    public float multiJumpPower = 4f;
+    public int multiJumpCount = 1;
+
+    [Space]
+
+    public float gravity = 12f;
+
+    [Space]
+
+    public float turnSmoothTime = 0.1f;
+    public float groundDistance = 0.2f;
 
     float maxSpeed;
     float speed = 0f;
     float acceleration;
     float deacceleration;
-    public float turnSmoothTime = 0.1f;
-    public float gravity = 20f;
-    public float jumpPower = 12f;
-    public float multiJumpPower = 8f;
-    public int multiJumpCount = 1;
     int multiJumpCounter = 0;
-    public float groundDistance = 0.2f;
     float turnSmoothVelocity;
     float targetAngle = 0;
     float angle = 0;
@@ -63,7 +76,9 @@ public class PlayerMovement : MonoBehaviour
             combatCamPosition.position = transform.position + combatCameraOffset;
         }
 
-        if (Vector3.Distance(transform.position, combatCamPosition.position) > 30 || Vector3.Distance(transform.position, combatCamPosition.position) < 15)
+        float distanceToCombatCamera = Vector3.Distance(transform.position, combatCamPosition.position);
+        Debug.Log(distanceToCombatCamera);
+        if (distanceToCombatCamera > 15 || distanceToCombatCamera < 7)
             combatMode = false;
 
         animator.SetBool("combatMode", combatMode);
