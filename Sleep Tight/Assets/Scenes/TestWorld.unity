@@ -219,7 +219,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129073405}
-  m_LocalRotation: {x: 0.06712659, y: 0.00000001769593, z: -0.0000000011905529, w: 0.9977445}
+  m_LocalRotation: {x: 0.06712659, y: -0.000000017695923, z: 0.0000000011905523, w: 0.9977445}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -542,7 +542,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784797041}
-  m_LocalRotation: {x: 0.049015008, y: 0.0000000021482127, z: -1.0542138e-10, w: 0.9987981}
+  m_LocalRotation: {x: 0.049015008, y: -0.000000002148212, z: 1.0542135e-10, w: 0.9987981}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_CollideAgainst:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 4294967295
   m_IgnoreTag: Player
   m_TransparentLayers:
     serializedVersion: 2
@@ -894,7 +894,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950580883}
-  m_LocalRotation: {x: 0.06712661, y: 0.000000017704956, z: -0.0000000011900037, w: 0.9977445}
+  m_LocalRotation: {x: 0.06712661, y: -0.00000001770495, z: 0.0000000011900029, w: 0.9977445}
   m_LocalPosition: {x: 0, y: 2.05, z: -4.93}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1073,6 +1073,11 @@ Transform:
 --- !u!4 &1165379763 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8b5a0589a6e57854aa4d709257177771, type: 3}
+  m_PrefabInstance: {fileID: 1298976313}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1165379764 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 8b5a0589a6e57854aa4d709257177771, type: 3}
   m_PrefabInstance: {fileID: 1298976313}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1298976313
@@ -1975,7 +1980,8 @@ MonoBehaviour:
     m_Bits: 64
   combatCamPosition: {fileID: 659788131}
   combatCameraOffset: {x: 0, y: 5, z: 10}
-  animator: {fileID: 1695195689}
+  cameraAnimator: {fileID: 1695195689}
+  characterAnimator: {fileID: 1165379764}
   walkSpeed: 3.5
   walkAcceleration: 25
   walkDeacceleration: 10
@@ -1990,7 +1996,7 @@ MonoBehaviour:
   multiJumpCount: 1
   gravity: 12
   turnSmoothTime: 0.1
-  groundDistance: 0.2
+  groundDistance: 0.1
 --- !u!4 &2061405032
 Transform:
   m_ObjectHideFlags: 0

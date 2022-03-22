@@ -11,7 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundMask;
     public Transform combatCamPosition;
     public Vector3 combatCameraOffset;
-    public Animator animator;
+    public Animator cameraAnimator;
+    public Animator characterAnimator;
 
     [Space]
 
@@ -58,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 velocity;
     bool isGrounded;
+    bool isWalking;
     bool isSprinting;
     bool combatMode = false;
 
@@ -81,7 +83,8 @@ public class PlayerMovement : MonoBehaviour
         if (distanceToCombatCamera > 15 || distanceToCombatCamera < 7)
             combatMode = false;
 
-        animator.SetBool("combatMode", combatMode);
+        cameraAnimator.SetBool("combatMode", combatMode);
+        characterAnimator.SetBool("isInCombatMode", combatMode);
 
         if (!combatMode)
             moveModeControls();
@@ -92,6 +95,9 @@ public class PlayerMovement : MonoBehaviour
     void moveModeControls()
     {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        characterAnimator.SetBool("isInAir", !isGrounded);
+        if (isGrounded)
+            characterAnimator.ResetTrigger("jump");
 
         if (isGrounded && velocity.y < 0)
         {
@@ -101,7 +107,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             if (isGrounded)
+            {
                 velocity.y = jumpPower;
+                characterAnimator.SetTrigger("jump");
+            }
             else if (multiJumpCounter < multiJumpCount)
             {
                 multiJumpCounter++;
@@ -112,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
 
                 if (velocity.y > jumpPower)
                     velocity.y = jumpPower;
+                characterAnimator.SetTrigger("jump");
             }
         }
 
@@ -167,12 +177,18 @@ public class PlayerMovement : MonoBehaviour
                 speed -= deacceleration * Time.deltaTime;
 
             angleDif = angle - targetAngle;
+            isWalking = true;
         }
         else
         {
             angleDif = 0;
             speed -= deacceleration * Time.deltaTime;
+            isWalking = false;
+            isSprinting = false;
         }
+
+        characterAnimator.SetBool("isMoving", isWalking);
+        characterAnimator.SetBool("isSprinting", isSprinting);
 
         if (speed < 0 || (angleDif > 90 && angleDif < 270) || (angleDif < -90 && angleDif > -270))
             speed = 0;
@@ -210,10 +226,13 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Jump") && isGrounded)
             {
                 speed = dashSpeed;
+                characterAnimator.SetTrigger("dash");
             }
 
             if (speed > maxSpeed)
                 speed -= deacceleration * Time.deltaTime;
+            else
+                characterAnimator.ResetTrigger("dash");
         }
         else
         {
