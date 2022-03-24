@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: TestMaterial
+  m_Name: TallGuyBody
   m_Shader: {fileID: -6465566751694194690, guid: 612fe26b02cb28b4fa2460503d13e9cb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -77,9 +77,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_172b8614813f4a82a57cb0955e08e289: 100
-    - Vector1_a0bb5a8c29d24cc4856c820cf7fae9ce: 0.0015
-    - Vector1_b4de9cca88434c0b9d6ba338ccf12265: 10
-    - Vector1_bdefb000e510462b936b7f88498155a5: 1
+    - Vector1_a0bb5a8c29d24cc4856c820cf7fae9ce: 0.0005
+    - Vector1_b4de9cca88434c0b9d6ba338ccf12265: 25
+    - Vector1_bdefb000e510462b936b7f88498155a5: 0.05
     - Vector1_dd0cae2738ad455d916d638ad4251e0b: 0.015
     - _AlphaClip: 0
     - _Blend: 0
@@ -109,7 +109,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_523dc586813544579726ada118e54902: {r: 23.968628, g: 21.960785, b: 4.0156865, a: 1}
-    - Vector3_dc6c07676def4b5dbd916bcee51c71ea: {r: 15, g: 50, b: 15, a: 0}
+    - Vector3_dc6c07676def4b5dbd916bcee51c71ea: {r: 5, g: 5, b: 1, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
