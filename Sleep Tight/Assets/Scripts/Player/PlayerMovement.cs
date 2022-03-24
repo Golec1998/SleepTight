@@ -31,6 +31,14 @@ public class PlayerMovement : MonoBehaviour
     public float combatSpeed = 2f;
     public float combatDeacceleration = 5f;
     public float dashSpeed = 10f;
+    public float dashCooldown = 0.5f;
+    public float attackCooldown = 0.3f;
+
+    [Space]
+
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
 
     [Space]
 
@@ -58,10 +66,12 @@ public class PlayerMovement : MonoBehaviour
     float angleDif = 0;
 
     Vector3 velocity;
-    bool isGrounded;
-    bool isWalking;
-    bool isSprinting;
+    bool isGrounded = true;
+    bool isMoving = false;
+    bool isSprinting = false;
     bool combatMode = false;
+    bool canDash = true;
+    bool canAttack = true;
 
     private void Start()
     {
@@ -74,12 +84,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("CombatMode"))
         {
+            characterAnimator.SetBool("isMoving", false);
+            characterAnimator.SetBool("isSprinting", false);
             combatMode = !combatMode;
             combatCamPosition.position = transform.position + combatCameraOffset;
         }
 
         float distanceToCombatCamera = Vector3.Distance(transform.position, combatCamPosition.position);
-        if (distanceToCombatCamera > 15 || distanceToCombatCamera < 7)
+        if (distanceToCombatCamera > 12 || distanceToCombatCamera < 5)
             combatMode = false;
 
         cameraAnimator.SetBool("combatMode", combatMode);
@@ -176,17 +188,17 @@ public class PlayerMovement : MonoBehaviour
                 speed -= deacceleration * Time.deltaTime;
 
             angleDif = angle - targetAngle;
-            isWalking = true;
+            isMoving = true;
         }
         else
         {
             angleDif = 0;
             speed -= deacceleration * Time.deltaTime;
-            isWalking = false;
+            isMoving = false;
             isSprinting = false;
         }
 
-        characterAnimator.SetBool("isMoving", isWalking);
+        characterAnimator.SetBool("isMoving", isMoving);
         characterAnimator.SetBool("isSprinting", isSprinting);
 
         if (speed < 0 || (angleDif > 90 && angleDif < 270) || (angleDif < -90 && angleDif > -270))
@@ -201,10 +213,12 @@ public class PlayerMovement : MonoBehaviour
 
     void combatModeControls()
     {
+
         maxSpeed = combatSpeed;
         deacceleration = combatDeacceleration;
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        characterAnimator.SetBool("isInAir", !isGrounded);
 
         if (isGrounded && velocity.y < 0)
             velocity.y = -5f;
@@ -213,7 +227,15 @@ public class PlayerMovement : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         Vector3 direction = new Vector3(h, 0f, v).normalized;
 
-        if (direction.magnitude >= 0.1f)
+        if (Input.GetButtonDown("Attack") && canAttack)
+        {
+            canAttack = false;
+            speed = 0;
+            characterAnimator.SetTrigger("attack");
+            this.Invoke(() => { canAttack = true; }, attackCooldown);
+        }
+
+        if (direction.magnitude >= 0.1f && canAttack)
         {
             targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -222,16 +244,16 @@ public class PlayerMovement : MonoBehaviour
             if(speed < maxSpeed)
             speed = maxSpeed;
 
-            if (Input.GetButtonDown("Jump") && isGrounded)
+            if (Input.GetButtonDown("Jump") && isGrounded && canDash)
             {
+                canDash = false;
                 speed = dashSpeed;
                 characterAnimator.SetTrigger("dash");
+                this.Invoke(() => { canDash = true; }, dashCooldown);
             }
 
             if (speed > maxSpeed)
                 speed -= deacceleration * Time.deltaTime;
-            else
-                characterAnimator.ResetTrigger("dash");
         }
         else
         {
@@ -246,6 +268,18 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    public void dealDamage()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
+        foreach (Collider enemy in hitEnemies)
+            enemy.GetComponent<EnemyAI>().getDamage();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
 }
