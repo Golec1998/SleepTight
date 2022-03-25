@@ -5,7 +5,14 @@ using UnityEngine;
 public class EnemyAI : MonoBehaviour
 {
     public float maxHealth = 20f;
+    public float regenerationSpeed = 1.5f;
     float health;
+
+    [Space]
+
+    public LayerMask lightMask;
+    public Transform lightDetector;
+    public float lightDetectionRadius;
 
     public Animator animator;
 
@@ -28,6 +35,8 @@ public class EnemyAI : MonoBehaviour
             health -= 5 * Time.deltaTime;
         }
 
+        regenerate();
+
     }
 
     public void getDamage()
@@ -42,6 +51,18 @@ public class EnemyAI : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             this.Invoke(() => { Destroy(transform.root.gameObject); }, 7f);
         }
+    }
+
+    void regenerate()
+    {
+        bool lightDetected = Physics.CheckSphere(lightDetector.position, lightDetectionRadius, lightMask);
+        if (!animator.GetBool("isDead") && health < maxHealth && !lightDetected)
+            health += regenerationSpeed * Time.deltaTime;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(lightDetector.position, lightDetectionRadius);
     }
 
 }
