@@ -7,10 +7,13 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController controller;
     public Transform cam;
+    public Camera Cam;
     public Transform groundCheck;
     public LayerMask groundMask;
-    public Transform combatCamPosition;
-    public Vector3 combatCameraOffset;
+    public Transform combatCam;
+    public Transform moveCam;
+    public Transform combatCamRoot;
+    public Transform combatCamTarget;
     public Animator cameraAnimator;
     public Animator characterAnimator;
 
@@ -36,15 +39,16 @@ public class PlayerMovement : MonoBehaviour
 
     [Space]
 
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-    public LayerMask enemyLayers;
-
-    [Space]
-
     public float jumpPower = 6f;
     public float multiJumpPower = 4f;
     public int multiJumpCount = 1;
+
+    [Space]
+
+    public Transform attackPoint;
+    public float attackRange = 0.5f;
+    public LayerMask enemyLayers;
+    public ParticleSystem[] attackTrail;
 
     [Space]
 
@@ -73,11 +77,15 @@ public class PlayerMovement : MonoBehaviour
     bool canDash = true;
     bool canAttack = true;
 
+    [System.Obsolete]
     private void Start()
     {
         maxSpeed = walkSpeed;
         acceleration = walkAcceleration;
         deacceleration = walkDeacceleration;
+
+        foreach (ParticleSystem trail in attackTrail)
+            trail.enableEmission = false;
     }
 
     void Update()
@@ -87,10 +95,16 @@ public class PlayerMovement : MonoBehaviour
             characterAnimator.SetBool("isMoving", false);
             characterAnimator.SetBool("isSprinting", false);
             combatMode = !combatMode;
-            combatCamPosition.position = transform.position + combatCameraOffset;
+            if (combatMode)
+            {
+                Quaternion rot = new Quaternion();
+                rot.eulerAngles = new Vector3(0f, cam.rotation.y * Mathf.Rad2Deg * (180f / 57.5f), 0f);
+                combatCamRoot.rotation = rot;
+                combatCam.position = combatCamTarget.position;
+            }
         }
 
-        float distanceToCombatCamera = Vector3.Distance(transform.position, combatCamPosition.position);
+        float distanceToCombatCamera = Vector3.Distance(transform.position, combatCam.position);
         if (distanceToCombatCamera > 12 || distanceToCombatCamera < 5)
             combatMode = false;
 
@@ -98,9 +112,17 @@ public class PlayerMovement : MonoBehaviour
         characterAnimator.SetBool("isInCombatMode", combatMode);
 
         if (!combatMode)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
             moveModeControls();
+        }
         else
+        {
+            Cursor.lockState = CursorLockMode.None;
             combatModeControls();
+        }
+
+        Cursor.visible = combatMode;
     }
 
     void moveModeControls()
@@ -211,6 +233,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
     }
 
+    [System.Obsolete]
     void combatModeControls()
     {
 
@@ -229,16 +252,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Attack") && canAttack)
         {
+            foreach (ParticleSystem trail in attackTrail)
+                trail.enableEmission = true;
             canAttack = false;
             speed = 0;
             characterAnimator.SetTrigger("attack");
-            this.Invoke(() => { canAttack = true; }, attackCooldown);
+            this.Invoke(() => { canAttack = true; foreach (ParticleSystem trail in attackTrail) trail.enableEmission = false; }, attackCooldown);
         }
 
         if (direction.magnitude >= 0.1f && canAttack)
         {
-            targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             if(speed < maxSpeed)
@@ -247,9 +271,10 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown("Jump") && isGrounded && canDash)
             {
                 canDash = false;
+                canAttack = false;
                 speed = dashSpeed;
                 characterAnimator.SetTrigger("dash");
-                this.Invoke(() => { canDash = true; }, dashCooldown);
+                this.Invoke(() => { canDash = true; canAttack = true; }, dashCooldown);
             }
 
             if (speed > maxSpeed)
@@ -265,9 +290,23 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 moveDirection = Quaternion.Euler(0f, angle, 0f) * Vector3.forward;
         controller.Move(moveDirection.normalized * speed * Time.deltaTime);
+        if (canAttack && canDash)
+            aimTowardMouse();
 
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
+    }
+
+    void aimTowardMouse()
+    {
+        Ray ray = Cam.ScreenPointToRay(Input.mousePosition);
+        if(Physics.Raycast(ray, out var hitInfo, Mathf.Infinity, (groundMask + enemyLayers)))
+        {
+            var _direction = hitInfo.point - transform.position;
+            _direction.y = 0f;
+            _direction.Normalize();
+            transform.forward = _direction;
+        }
     }
 
     public void dealDamage()
