@@ -17,11 +17,14 @@ public class EnemyAI : MonoBehaviour
     public Animator animator;
 
     Renderer thisGuy;
+    public Transform thisGuysHPShard;
+    Renderer thisGuysHP;
 
     [System.Obsolete]
     void Start()
     {
         thisGuy = transform.FindChild("Body").GetComponent<Renderer>();
+        thisGuysHP = thisGuysHPShard.FindChild("HP").GetComponent<Renderer>();
         health = maxHealth;
     }
 
@@ -29,6 +32,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         thisGuy.materials[0].SetFloat("HP", health / maxHealth);
+        thisGuysHP.materials[0].SetFloat("Fill", health / maxHealth);
         if (animator.GetBool("isDead"))
         {
             transform.FindChild("TallGuyCameraEffects").position = new Vector3(transform.FindChild("TallGuyCameraEffects").position.x, transform.FindChild("TallGuyCameraEffects").position.y + 5f * Time.deltaTime, transform.FindChild("TallGuyCameraEffects").position.z);
@@ -39,17 +43,19 @@ public class EnemyAI : MonoBehaviour
 
     }
 
+    [System.Obsolete]
     public void getDamage()
     {
         Debug.Log("Ouch!");
         health -= 3;
-        if (health < 0)
+        if (health <= 0)
         {
             Debug.Log("Dead");
             animator.SetBool("isDead", true);
             thisGuy.materials[1].SetFloat("Alive", 0);
             GetComponent<Collider>().enabled = false;
-            this.Invoke(() => { Destroy(transform.root.gameObject); }, 7f);
+            Destroy(transform.FindChild("LifeShard").gameObject);
+            this.Invoke(() => { Destroy(transform.root.gameObject); }, 5f);
         }
     }
 

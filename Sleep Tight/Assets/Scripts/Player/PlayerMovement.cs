@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform combatCamTarget;
     public Animator cameraAnimator;
     public Animator characterAnimator;
+    public LayerMask combatUI;
 
     [Space]
 
@@ -101,7 +102,10 @@ public class PlayerMovement : MonoBehaviour
                 rot.eulerAngles = new Vector3(0f, cam.rotation.y * Mathf.Rad2Deg * (180f / 57.5f), 0f);
                 combatCamRoot.rotation = rot;
                 combatCam.position = combatCamTarget.position;
+                Cam.cullingMask = Cam.cullingMask | (1 << 10);
             }
+            else
+                Cam.cullingMask = Cam.cullingMask & ~(1 << 10);
         }
 
         float distanceToCombatCamera = Vector3.Distance(transform.position, combatCam.position);

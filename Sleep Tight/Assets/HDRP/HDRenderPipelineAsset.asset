@@ -280,11 +280,11 @@ MonoBehaviour:
       punctualLightShadowAtlas:
         shadowAtlasResolution: 4096
         shadowAtlasDepthBits: 32
-        useDynamicViewportRescale: 1
+        useDynamicViewportRescale: 0
       areaLightShadowAtlas:
         shadowAtlasResolution: 4096
         shadowAtlasDepthBits: 32
-        useDynamicViewportRescale: 1
+        useDynamicViewportRescale: 0
       cachedPunctualLightShadowAtlas: 2048
       cachedAreaLightShadowAtlas: 1024
       shadowResolutionDirectional:
