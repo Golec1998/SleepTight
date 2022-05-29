@@ -109,7 +109,8 @@ public class PlayerMovement : MonoBehaviour
         }
 
         float distanceToCombatCamera = Vector3.Distance(transform.position, combatCam.position);
-        if (distanceToCombatCamera > 12 || distanceToCombatCamera < 5)
+        Debug.Log(distanceToCombatCamera);
+        if (distanceToCombatCamera > 7 || distanceToCombatCamera < 2.5)
             combatMode = false;
 
         cameraAnimator.SetBool("combatMode", combatMode);

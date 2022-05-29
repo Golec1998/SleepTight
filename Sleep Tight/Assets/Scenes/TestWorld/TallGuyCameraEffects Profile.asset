@@ -34,7 +34,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   scale:
     m_OverrideState: 1
-    m_Value: 0.95
+    m_Value: 0.94
     min: 0.01
     max: 5
 --- !u!114 &-3019411058752901604
@@ -72,7 +72,7 @@ MonoBehaviour:
     max: 180
   saturation:
     m_OverrideState: 1
-    m_Value: -63.7
+    m_Value: -100
     min: -100
     max: 100
 --- !u!114 &11400000

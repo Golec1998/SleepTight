@@ -674,7 +674,7 @@
                 "m_Node": {
                     "m_Id": "84cedef069b246acbc30a7eb924dcf6b"
                 },
-                "m_SlotId": 2
+                "m_SlotId": 1
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -688,7 +688,7 @@
                 "m_Node": {
                     "m_Id": "84cedef069b246acbc30a7eb924dcf6b"
                 },
-                "m_SlotId": 3
+                "m_SlotId": 2
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -702,7 +702,7 @@
                 "m_Node": {
                     "m_Id": "84cedef069b246acbc30a7eb924dcf6b"
                 },
-                "m_SlotId": 4
+                "m_SlotId": 3
             },
             "m_InputSlot": {
                 "m_Node": {
@@ -2146,7 +2146,7 @@
     "overrideHLSLDeclaration": false,
     "hlslDeclarationOverride": 0,
     "m_Hidden": false,
-    "m_Value": -0.15000000596046449,
+    "m_Value": -0.2800000011920929,
     "m_FloatType": 0,
     "m_RangeValues": {
         "x": 0.0,
@@ -8277,8 +8277,8 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -2308.0,
-            "y": -2101.0,
+            "x": -2244.0,
+            "y": -2132.0,
             "width": 206.0,
             "height": 132.0
         }
@@ -8678,7 +8678,7 @@
     ],
     "synonyms": [],
     "m_Precision": 0,
-    "m_PreviewExpanded": false,
+    "m_PreviewExpanded": true,
     "m_PreviewMode": 0,
     "m_CustomColors": {
         "m_SerializableColors": []
