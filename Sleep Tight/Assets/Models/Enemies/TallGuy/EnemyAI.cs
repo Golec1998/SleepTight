@@ -8,12 +8,6 @@ public class EnemyAI : MonoBehaviour
     public float regenerationSpeed = 1.5f;
     float health;
 
-    [Space]
-
-    public LayerMask lightMask;
-    public Transform lightDetector;
-    public float lightDetectionRadius;
-
     public Animator animator;
 
     Renderer thisGuy;
@@ -32,14 +26,17 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         thisGuy.materials[0].SetFloat("HP", health / maxHealth);
-        thisGuysHP.materials[0].SetFloat("Fill", health / maxHealth);
         if (animator.GetBool("isDead"))
         {
-            transform.FindChild("TallGuyCameraEffects").position = new Vector3(transform.FindChild("TallGuyCameraEffects").position.x, transform.FindChild("TallGuyCameraEffects").position.y + 5f * Time.deltaTime, transform.FindChild("TallGuyCameraEffects").position.z);
+            transform.FindChild("TallGuyCameraEffects").position = new Vector3(transform.FindChild("TallGuyCameraEffects").position.x, transform.FindChild("TallGuyCameraEffects").position.y + 2f * Time.deltaTime, transform.FindChild("TallGuyCameraEffects").position.z);
             health -= 5 * Time.deltaTime;
         }
+        else
+            thisGuysHP.materials[0].SetFloat("Fill", health / maxHealth);
 
         regenerate();
+
+        Debug.Log(health);
 
     }
 
@@ -61,14 +58,8 @@ public class EnemyAI : MonoBehaviour
 
     void regenerate()
     {
-        bool lightDetected = Physics.CheckSphere(lightDetector.position, lightDetectionRadius, lightMask);
-        if (!animator.GetBool("isDead") && health < maxHealth && !lightDetected)
+        if (!animator.GetBool("isDead"))
             health += regenerationSpeed * Time.deltaTime;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.DrawWireSphere(lightDetector.position, lightDetectionRadius);
     }
 
 }
