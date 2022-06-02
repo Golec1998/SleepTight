@@ -36,8 +36,6 @@ public class TallGuyAI : MonoBehaviour
 
         regenerate();
 
-        Debug.Log(health);
-
     }
 
     [System.Obsolete]

@@ -172,6 +172,25 @@ Transform:
   m_Father: {fileID: 1165379763}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &90087252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1300934474885031738, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
+  m_PrefabInstance: {fileID: 1548486281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &90087256
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90087252}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5876888485986848292, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
 --- !u!1001 &101960697
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5123,7 +5142,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129073405}
-  m_LocalRotation: {x: 0.036651116, y: -0.30289423, z: 0.0116581125, w: 0.9522478}
+  m_LocalRotation: {x: 0.036651116, y: -0.30289426, z: 0.0116581125, w: 0.9522478}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5478,6 +5497,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &490197830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2311443107254108939, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
+  m_PrefabInstance: {fileID: 1548486281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &490197834
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490197830}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3979038980927143152, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
 --- !u!1 &508518011
 GameObject:
   m_ObjectHideFlags: 0
@@ -6000,6 +6038,37 @@ CharacterController:
   m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.35, z: 0}
+--- !u!114 &808236331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808236328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea18265d65caaf449a443170a5e7c22d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lm:
+    serializedVersion: 2
+    m_Bits: 64
+--- !u!54 &808236332
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808236328}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &822457927 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3650483980936942237, guid: 9abc399e7fbb6054ea26aece2ba178c9, type: 3}
@@ -6480,10 +6549,10 @@ GameObject:
   m_Component:
   - component: {fileID: 950580887}
   - component: {fileID: 950580886}
-  - component: {fileID: 950580885}
   - component: {fileID: 950580884}
   - component: {fileID: 950580888}
   - component: {fileID: 950580889}
+  - component: {fileID: 950580885}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -6525,14 +6594,19 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!81 &950580885
-AudioListener:
+--- !u!114 &950580885
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950580883}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86c6556701af9e04380698b89f691b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attenuationObject: {fileID: 0}
 --- !u!20 &950580886
 Camera:
   m_ObjectHideFlags: 0
@@ -6583,7 +6657,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950580883}
-  m_LocalRotation: {x: 0.033195652, y: -0.30293456, z: 0.010558988, w: 0.9523745}
+  m_LocalRotation: {x: 0.033195652, y: -0.30293462, z: 0.010558987, w: 0.9523745}
   m_LocalPosition: {x: 4.653866, y: 1.5928566, z: 4.9249306}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6801,6 +6875,10 @@ PrefabInstance:
     - target: {fileID: 1132293533214318322, guid: f35ef690e7448804193af8763fefede5, type: 3}
       propertyPath: m_Name
       value: Chair (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132293533214318322, guid: f35ef690e7448804193af8763fefede5, type: 3}
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f35ef690e7448804193af8763fefede5, type: 3}
@@ -7547,6 +7625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1132293533214318322, guid: f35ef690e7448804193af8763fefede5, type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f35ef690e7448804193af8763fefede5, type: 3}
 --- !u!1 &1317021575
@@ -7623,6 +7705,25 @@ MonoBehaviour:
   maxHealth: 20
   regenerationSpeed: 1
   animator: {fileID: 1394307061}
+--- !u!1 &1507740426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2689857240115066914, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
+  m_PrefabInstance: {fileID: 1548486281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1507740430
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1507740426}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8120780471077239491, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
 --- !u!1 &1528343813
 GameObject:
   m_ObjectHideFlags: 0
@@ -7736,17 +7837,33 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -2833524777303055231, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
     - target: {fileID: -2689857240115066914, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2689857240115066914, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: -2311443107254108939, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -2311443107254108939, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
+      propertyPath: m_TagString
+      value: Tiles
+      objectReference: {fileID: 0}
     - target: {fileID: -1300934474885031738, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -1300934474885031738, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
+      propertyPath: m_TagString
+      value: Carpet
       objectReference: {fileID: 0}
     - target: {fileID: -421878513963759736, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -7924,6 +8041,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9abc399e7fbb6054ea26aece2ba178c9, type: 3}
+--- !u!1 &1601876466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2833524777303055231, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
+  m_PrefabInstance: {fileID: 1548486281}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1601876470
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601876466}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1302631994165412952, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
 --- !u!1 &1649509828
 GameObject:
   m_ObjectHideFlags: 0
@@ -9311,6 +9447,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1132293533214318322, guid: f35ef690e7448804193af8763fefede5, type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f35ef690e7448804193af8763fefede5, type: 3}
 --- !u!1 &1926959549
@@ -9630,6 +9770,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 432ca07529b89db4a99e93f038b72031, type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 432ca07529b89db4a99e93f038b72031, type: 3}
 --- !u!1 &2013694136 stripped
@@ -9831,6 +9975,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Chair
       objectReference: {fileID: 0}
+    - target: {fileID: 1132293533214318322, guid: f35ef690e7448804193af8763fefede5, type: 3}
+      propertyPath: m_TagString
+      value: Wood
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f35ef690e7448804193af8763fefede5, type: 3}
 --- !u!4 &543450652299284045 stripped
@@ -9848,24 +9996,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 359556059410875464, guid: f35ef690e7448804193af8763fefede5, type: 3}
   m_PrefabInstance: {fileID: 249913674960742096}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &919132148420656088 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ec82c89e665b9574daee5939a6229fac, type: 3}
-  m_PrefabInstance: {fileID: 1548486281}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &919132148420656089
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148420656088}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 21, y: 0.5, z: 11}
-  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!1001 &4815369582319407142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9933,6 +10063,10 @@ PrefabInstance:
     - target: {fileID: 6952321934627521776, guid: af0cf56ab0228ac448ec5d3cffef608c, type: 3}
       propertyPath: m_Name
       value: DiningTable
+      objectReference: {fileID: 0}
+    - target: {fileID: 6952321934627521776, guid: af0cf56ab0228ac448ec5d3cffef608c, type: 3}
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: 7723756212857151050, guid: af0cf56ab0228ac448ec5d3cffef608c, type: 3}
       propertyPath: m_RootOrder
