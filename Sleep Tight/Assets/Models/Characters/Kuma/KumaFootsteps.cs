@@ -23,7 +23,7 @@ public class KumaFootsteps : MonoBehaviour
         playSound(1);
     }
 
-    void fallSound()
+    void landingSound()
     {
         playSound(2);
     }
