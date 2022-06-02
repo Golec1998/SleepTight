@@ -2140,7 +2140,7 @@
     },
     "m_Name": "HP",
     "m_DefaultReferenceName": "Vector1_15a54a2854ca4bc1a3182ce7caa82b69",
-    "m_OverrideReferenceName": "HP",
+    "m_OverrideReferenceName": "_HP",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,

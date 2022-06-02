@@ -733,7 +733,7 @@
     },
     "m_Name": "Alive",
     "m_DefaultReferenceName": "Vector1_baf5087276b44b64a87d012d7e2681d7",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "_Alive",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,

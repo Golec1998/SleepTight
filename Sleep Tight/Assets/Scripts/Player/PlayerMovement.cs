@@ -318,7 +318,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider enemy in hitEnemies)
-            enemy.GetComponent<EnemyAI>().getDamage();
+            enemy.GetComponent<TallGuyAI>().getDamage();
     }
 
     private void OnDrawGizmosSelected()
