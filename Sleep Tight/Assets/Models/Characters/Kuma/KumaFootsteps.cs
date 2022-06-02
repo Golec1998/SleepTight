@@ -9,7 +9,6 @@ public class KumaFootsteps : MonoBehaviour
 
     int materialVal;
     RaycastHit rh;
-    float distance = 2f;
     string eventPath = "event:/Player/Footsteps";
     public LayerMask lm;
 
