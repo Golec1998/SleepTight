@@ -20,14 +20,20 @@ public class PoltergeistAI : MonoBehaviour
         thisEnemy = transform.Find("Body").GetComponent<Renderer>();
         thisEnemyEyes = transform.Find("Eyes").GetComponent<Renderer>();
         health = maxHealth;
-        alive = 1;
+        alive = 0;
     }
 
     [System.Obsolete]
     void Update()
     {
-        if(animator.GetBool("isDead") && alive > 0)
+        if(animator.GetBool("isDead"))
             alive -= 0.5f * Time.deltaTime;
+        else
+            alive += 0.35f * Time.deltaTime;
+        if(alive < 0f)
+            alive = 0f;
+        else if(alive > 1f)
+            alive = 1f;
         thisEnemy.materials[0].SetFloat("_Alive", alive);
         thisEnemyEyes.materials[0].SetFloat("_Alive", alive);
 
