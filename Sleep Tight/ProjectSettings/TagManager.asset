@@ -7,6 +7,11 @@ TagManager:
   - Wood
   - Carpet
   - Tiles
+  - PlayButton
+  - MonstersButton
+  - OptionsButton
+  - ExitButton
+  - Stage1
   layers:
   - Default
   - TransparentFX
@@ -19,7 +24,7 @@ TagManager:
   - Aim
   - Light
   - CombatUI
-  - 
+  - Menu
   - 
   - 
   - 
