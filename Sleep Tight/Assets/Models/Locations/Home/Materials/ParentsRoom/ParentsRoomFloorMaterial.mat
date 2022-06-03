@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ParentsRoomFloorMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: b5035be199d239b47b948ccfd51febcf, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 608f9b265ec1ca642a66b1c7e73c14fe, type: 3}
   m_ShaderKeywords: _DISABLE_SSR_TRANSPARENT
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -25,6 +25,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_11cf8485836547e182fc4df3eda47e7d:
+        m_Texture: {fileID: 2800000, guid: 66643e06e813f734ca6aa7c793338b80, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_276808dd5e7b4a70b8acac2a2686a50f:
         m_Texture: {fileID: 2800000, guid: 57f4e04ba1ab4444e94fba62f8587514, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -34,6 +38,14 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_455040b7f96f42ae88da7a6fb2e39161:
+        m_Texture: {fileID: 2800000, guid: 754c1a428f23f444cb6311c8db82fef4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_752f73cd6e1b4d1eb77f890cab4b4775:
+        m_Texture: {fileID: 2800000, guid: 57f4e04ba1ab4444e94fba62f8587514, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_fa3e1171275b47c6895ac029b668ea10:
         m_Texture: {fileID: 2800000, guid: 754c1a428f23f444cb6311c8db82fef4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}

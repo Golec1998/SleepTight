@@ -5142,11 +5142,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129073405}
-<<<<<<< HEAD
-  m_LocalRotation: {x: 0.038460575, y: -0.0000000021492066, z: 8.272091e-11, w: 0.9992601}
-=======
   m_LocalRotation: {x: 0.036651116, y: -0.30289426, z: 0.0116581125, w: 0.9522478}
->>>>>>> c2cf827eba50302b54398389c5375a620f1e854a
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6313,11 +6309,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913916123}
-<<<<<<< HEAD
-  m_LocalRotation: {x: 0.38436046, y: 0.000000015884641, z: -0.000000006613453, w: 0.92318314}
-=======
   m_LocalRotation: {x: 0.17577948, y: 0.06947442, z: -0.012437339, w: 0.9818962}
->>>>>>> c2cf827eba50302b54398389c5375a620f1e854a
   m_LocalPosition: {x: 0, y: 5.5700006, z: -11.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -6665,13 +6657,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950580883}
-<<<<<<< HEAD
-  m_LocalRotation: {x: 0.034834526, y: -0.000000017945876, z: -4.93166e-10, w: 0.99939317}
-  m_LocalPosition: {x: 0, y: 1.5928566, z: -3.9878914}
-=======
   m_LocalRotation: {x: 0.033195652, y: -0.30293462, z: 0.010558987, w: 0.9523745}
   m_LocalPosition: {x: 4.653866, y: 1.5928566, z: 4.9249306}
->>>>>>> c2cf827eba50302b54398389c5375a620f1e854a
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6968,11 +6955,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008330628}
-<<<<<<< HEAD
-  m_LocalRotation: {x: 0.05663025, y: -0.000000017312455, z: 9.819846e-10, w: 0.99839526}
-=======
   m_LocalRotation: {x: 0.053965956, y: -0.3026321, z: 0.017165681, w: 0.9514236}
->>>>>>> c2cf827eba50302b54398389c5375a620f1e854a
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7568,10 +7551,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8b5a0589a6e57854aa4d709257177771, type: 3}
       propertyPath: m_Name
       value: Kuma
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 8b5a0589a6e57854aa4d709257177771, type: 3}
-      propertyPath: m_TagString
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1630794972795428178, guid: 8b5a0589a6e57854aa4d709257177771, type: 3}
       propertyPath: m_Materials.Array.data[0]
