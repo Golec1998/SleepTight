@@ -5050,7 +5050,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 129073405}
-  m_LocalRotation: {x: 0.038460575, y: 0.0000000021492064, z: -8.2720907e-11, w: 0.9992601}
+  m_LocalRotation: {x: 0.038460575, y: -0.0000000021492066, z: 8.272091e-11, w: 0.9992601}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7156,7 +7156,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913916123}
-  m_LocalRotation: {x: 0.38436046, y: -0.000000015884641, z: 0.000000006613453, w: 0.92318314}
+  m_LocalRotation: {x: 0.38436046, y: 0.000000015884641, z: -0.000000006613453, w: 0.92318314}
   m_LocalPosition: {x: 0, y: 5.5700006, z: -11.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -7445,7 +7445,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950580883}
-  m_LocalRotation: {x: 0.034834526, y: 0.000000017945876, z: 4.93166e-10, w: 0.99939317}
+  m_LocalRotation: {x: 0.034834526, y: -0.000000017945876, z: -4.93166e-10, w: 0.99939317}
   m_LocalPosition: {x: 0, y: 1.5928566, z: -3.9878914}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -7772,7 +7772,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008330628}
-  m_LocalRotation: {x: 0.05663022, y: 0.000000017312455, z: -9.819842e-10, w: 0.99839526}
+  m_LocalRotation: {x: 0.05663025, y: -0.000000017312455, z: 9.819846e-10, w: 0.99839526}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8078,6 +8078,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 8b5a0589a6e57854aa4d709257177771, type: 3}
       propertyPath: m_Name
       value: Kuma
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8b5a0589a6e57854aa4d709257177771, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1630794972795428178, guid: 8b5a0589a6e57854aa4d709257177771, type: 3}
       propertyPath: m_Materials.Array.data[0]
