@@ -12,6 +12,7 @@ TagManager:
   - OptionsButton
   - ExitButton
   - Stage1
+  - Back
   layers:
   - Default
   - TransparentFX

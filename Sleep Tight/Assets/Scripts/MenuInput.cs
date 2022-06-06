@@ -43,6 +43,9 @@ public class MenuInput : MonoBehaviour
                 case "Stage1":
                     startStage(1);
                     break;
+                case "Back":
+                    menuCamController.SetTrigger("BackToMain");
+                    break;
             }
             Debug.Log(hitInfo.collider.tag);
         }
