@@ -12,6 +12,14 @@ public class PoltergeistAI : MonoBehaviour
 
     public Animator animator;
 
+    [Space]
+
+    public Transform throwableChecker;
+    public Transform spinner;
+    public LayerMask throwableLayer;
+    int[] throwablePosition = { -1, -1, -1, -1, -1 };
+    public GameObject[] throwableSlots;
+
     Renderer thisEnemy;
     Renderer thisEnemyEyes;
 
@@ -21,6 +29,7 @@ public class PoltergeistAI : MonoBehaviour
         thisEnemyEyes = transform.Find("Eyes").GetComponent<Renderer>();
         health = maxHealth;
         alive = 0;
+        collectThrowables();
     }
 
     [System.Obsolete]
@@ -38,6 +47,28 @@ public class PoltergeistAI : MonoBehaviour
         thisEnemyEyes.materials[0].SetFloat("_Alive", alive);
 
         regenerate();
+    }
+
+    void collectThrowables()
+    {
+        Collider[] throwables = Physics.OverlapSphere(throwableChecker.position, 3f, throwableLayer);
+        int n = throwables.Length;
+        if (n > 5)
+            n = 5;
+        int i = 0;
+
+        //Tu zbieramy do karuzeli
+        do
+        {
+            int position = Random.Range(0, 5);
+            if (throwablePosition[position] == -1)
+            {
+                throwablePosition[position] = i;
+                i++;
+            }
+        } while (i < n);
+        throwables[0].transform.position = throwableSlots[0].transform.position;
+    
     }
 
     [System.Obsolete]
@@ -60,6 +91,12 @@ public class PoltergeistAI : MonoBehaviour
     {
         if (!animator.GetBool("isDead") && health < maxHealth)
             health += regenerationSpeed * Time.deltaTime;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(throwableChecker.position, 3f);
+        Gizmos.DrawWireSphere(spinner.position, 0.5f);
     }
 
 }
