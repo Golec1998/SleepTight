@@ -37,14 +37,6 @@ public class TallGuySpawn : MonoBehaviour
     {
         GameObject tg = Instantiate(TallGuy, transform.position, transform.rotation);
         tg.GetComponent<TallGuyAI>().setPath(path);
-        /*
-        doorL.Rotate(0, 0, target);
-        doorR.Rotate(0, 0, -target);
-        this.Invoke(() => {
-            doorL.Rotate(0, 0, -target);
-            doorR.Rotate(0, 0, target);
-        }, 1f);
-        */
         newAngleL = targetAngleL;
         newAngleR = targetAngleR;
         this.Invoke(() => {
