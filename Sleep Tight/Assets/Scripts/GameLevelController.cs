@@ -6,21 +6,56 @@ public class GameLevelController : MonoBehaviour
 {
 
     public GameObject player;
-    public GameObject[] TallGuySpawnpoints;
-    public int TallGuysNumber = 1;
-    int minTallGuysNumber = 1, maxTallGuysNumber = 5;
-    public Vector2 levelDuration;
-    float timeToEnd, safeTime;
-    float[] respTime = new float[5];
-    int respOrder = 0;
 
     [Space]
-    [Header("Debug only")]
-    public bool isItShowTime = false;
+    public GameObject[] TallGuySpawnpoints;
+    public int TallGuysNumber = 1;
+    int minTallGuysNumber = 0, maxTallGuysNumber = 5;
+    
+    public GameObject[] PoltergeistSpawnpoints;
+    public int PoltergeistNumber = 1;
+    int minPoltergeistNumber = 0, maxPoltergeistNumber = 5;
+    
+    public GameObject[] StinkerSpawnpoints;
+    public int StinkerNumber = 1;
+    int minStinkerNumber = 0, maxStinkerNumber = 5;
+
+    [Space]
+    public Vector2 levelDuration;
+    float timeToEnd, safeTime;
+
+    //Spawn controll
+    float[] TallGuysSpawnTimes = new float[5];
+    int TallGuysSpawnOrder = 0;
+    
+    float[] PoltergeistSpawnTimes = new float[5];
+    int PoltergeistSpawnOrder = 0;
+    
+    float[] StinkerSpawnTimes = new float[5];
+    int StinkerSpawnOrder = 0;
 
     void Start()
     {
-        // Make sure values stays in range
+        controllVariables();        //Here we make sure that some variables are in range and set start values of the others
+
+        setupTallGuysSpawns();
+        
+
+    }
+
+    void Update()
+    {
+        timeToEnd -= Time.deltaTime;
+
+        spawnControll();
+
+        if (checkForEndGame())
+            endGame();
+
+    }
+
+    void controllVariables()
+    {
         if (TallGuysNumber < minTallGuysNumber)
             TallGuysNumber = minTallGuysNumber;
         else if (TallGuysNumber > maxTallGuysNumber)
@@ -29,35 +64,6 @@ public class GameLevelController : MonoBehaviour
 
         timeToEnd = levelDuration.x * 60f + levelDuration.y;
         safeTime = timeToEnd - 60f;
-        for(int i = 0; i < TallGuysNumber; i++)
-        {
-            //float nextRespTime = Random.Range((safeTime / TallGuysNumber) * (i), (safeTime / TallGuysNumber) * (i + 1)) + 30f;
-            float nextRespTime = Random.Range(0, (safeTime / (TallGuysNumber * 2))) + (safeTime / TallGuysNumber) * i + 30f;
-            respTime[TallGuysNumber - i - 1] = nextRespTime;
-            Debug.Log(nextRespTime);
-        }
-
-    }
-
-    void Update()
-    {
-        timeToEnd -= Time.deltaTime;
-
-        if(respOrder < respTime.Length)
-            if(timeToEnd < respTime[respOrder])
-            {
-                respTallGuy();
-                respOrder++;
-            }
-
-
-
-        if (checkForEndGame())
-            endGame();
-
-        if (isItShowTime)
-            Debug.Log(showTime());
-
     }
 
     public string showTime()
@@ -70,6 +76,62 @@ public class GameLevelController : MonoBehaviour
         return time;
     }
 
+    void setupTallGuysSpawns()
+    {
+        for(int i = 0; i < TallGuysNumber; i++)
+        {
+            float nextTallGuysSpawnTimes = Random.Range(0, (safeTime / (TallGuysNumber * 2))) + (safeTime / TallGuysNumber) * i + 30f;
+            TallGuysSpawnTimes[TallGuysNumber - i - 1] = nextTallGuysSpawnTimes;
+            //Debug.Log(nextTallGuysSpawnTimes);
+        }
+    }
+
+    void setupPoltergeistSpawns()
+    {
+        //TODO
+    }
+
+    void setupStinkerSpawns()
+    {
+        //TODO
+    }
+
+    void spawnControll()
+    {
+        //TallGuy spawn controll
+        if(TallGuysSpawnOrder < TallGuysSpawnTimes.Length)
+            if(timeToEnd < TallGuysSpawnTimes[TallGuysSpawnOrder])
+            {
+                spawnTallGuy();
+                TallGuysSpawnOrder++;
+            }
+            //TODO better mathematical model for choosing next spawnpoint
+
+        //Poltergeist spawn controll
+        //TODO
+
+        //Stinker spawn controll
+        //TODO
+
+    }
+
+    void spawnTallGuy()
+    {
+        int n = TallGuySpawnpoints.Length;
+        int randomPoint = Random.Range(0, n);
+        TallGuySpawnpoints[randomPoint].GetComponent<TallGuySpawn>().spawn();
+    }
+
+    void spawnPoltergeist()
+    {
+        //TODO
+    }
+
+    void spawnStinker()
+    {
+        //TODO
+    }
+
     bool checkForEndGame()
     {
         bool condition = false;
@@ -79,13 +141,6 @@ public class GameLevelController : MonoBehaviour
             condition = true;
 
         return condition;
-    }
-
-    void respTallGuy()
-    {
-        int n = TallGuySpawnpoints.Length;
-        int randomPoint = Random.Range(0, n);
-        TallGuySpawnpoints[randomPoint].GetComponent<TallGuyResp>().resp();
     }
 
     void endGame()

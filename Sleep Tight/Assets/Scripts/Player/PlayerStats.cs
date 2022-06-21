@@ -17,6 +17,7 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         health = maxHealth;
+        energy = maxEnergy;
     }
 
     void Update()
@@ -26,7 +27,10 @@ public class PlayerStats : MonoBehaviour
 
         //Debug
         if(isDying)
+        {
             health -= Time.deltaTime;
+            energy -= Time.deltaTime;
+        }
     }
 
     public float getHealth() { return health; }
