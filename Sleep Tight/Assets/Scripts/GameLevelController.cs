@@ -82,7 +82,7 @@ public class GameLevelController : MonoBehaviour
         {
             float nextTallGuysSpawnTimes = Random.Range(0, (safeTime / (TallGuysNumber * 2))) + (safeTime / TallGuysNumber) * i + 30f;
             TallGuysSpawnTimes[TallGuysNumber - i - 1] = nextTallGuysSpawnTimes;
-            //Debug.Log(nextTallGuysSpawnTimes);
+            Debug.Log(nextTallGuysSpawnTimes);
         }
     }
 
