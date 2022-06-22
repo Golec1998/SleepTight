@@ -16,7 +16,7 @@ public class KidController : MonoBehaviour
     void Start()
     {
         sleep = maxSleep;
-        comfort = maxComfort;
+        comfort = maxComfort / 2f;
     }
 
     void Update()

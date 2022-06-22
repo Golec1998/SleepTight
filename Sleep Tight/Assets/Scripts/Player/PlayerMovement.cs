@@ -108,6 +108,8 @@ public class PlayerMovement : MonoBehaviour
                 }
                 else
                     Cam.cullingMask = Cam.cullingMask & ~(1 << 10);
+                
+                Cursor.visible = combatMode;
             }
 
             float distanceToCombatCamera = Vector3.Distance(transform.position, combatCam.position);
