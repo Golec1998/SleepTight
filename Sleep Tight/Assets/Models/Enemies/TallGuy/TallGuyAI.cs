@@ -17,6 +17,10 @@ public class TallGuyAI : MonoBehaviour
     int movementTarget = 0;
     float timeOfMovement = 0f, movementSpeed = 0.7f, movementTimeLimit;
 
+    [Space]
+    bool canAttack = false;
+    public GameObject kid;
+
     Renderer thisEnemy;
 
     [System.Obsolete]
@@ -37,8 +41,8 @@ public class TallGuyAI : MonoBehaviour
             health -= 5 * Time.deltaTime;
         }
         
-        if(canMove)
-            move();
+        if(canMove) move();
+        if(canAttack) invokeNightmares();
 
         regenerate();
 
@@ -96,7 +100,10 @@ public class TallGuyAI : MonoBehaviour
             }
         }
         else
+        {
             canMove = false;
+            canAttack = true;
+        }
     }
 
     void invokeNightmares()
@@ -104,7 +111,13 @@ public class TallGuyAI : MonoBehaviour
         //TODO
 
         //Rotate to kid
-        //Start atacking kid
+        Quaternion targetRotation = Quaternion.identity;
+        Vector3 targetDirection = (kid.transform.position - transform.position).normalized;
+        targetRotation = Quaternion.LookRotation(targetDirection);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * 150f);
+
+        //Attack kid
+
     }
 
 }

@@ -17,7 +17,7 @@ public class DisplayStats : MonoBehaviour
     [Space]
     public Slider sleep;
     public Slider comfort;
-    //public GameObject kid; 
+    public GameObject kid; 
 
     void Update()
     {
@@ -25,5 +25,8 @@ public class DisplayStats : MonoBehaviour
 
         hp.value = player.GetComponent<PlayerStats>().getHealth() / player.GetComponent<PlayerStats>().maxHealth;
         energy.value = player.GetComponent<PlayerStats>().getEnergy() / player.GetComponent<PlayerStats>().maxEnergy;
+
+        sleep.value = kid.GetComponent<KidController>().getSleep() / kid.GetComponent<KidController>().maxSleep;
+        comfort.value = kid.GetComponent<KidController>().getComfort() / kid.GetComponent<KidController>().maxComfort;
     }
 }

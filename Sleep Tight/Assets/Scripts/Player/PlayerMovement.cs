@@ -91,43 +91,45 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("CombatMode"))
+        if(!PauseMenu.gameIsPaused)
         {
-            characterAnimator.SetBool("isMoving", false);
-            characterAnimator.SetBool("isSprinting", false);
-            combatMode = !combatMode;
-            if (combatMode)
+            if (Input.GetButtonDown("CombatMode"))
             {
-                Quaternion rot = new Quaternion();
-                rot.eulerAngles = new Vector3(0f, cam.rotation.y * Mathf.Rad2Deg * (180f / 57.5f), 0f);
-                combatCamRoot.rotation = rot;
-                combatCam.position = combatCamTarget.position;
-                Cam.cullingMask = Cam.cullingMask | (1 << 10);
+                characterAnimator.SetBool("isMoving", false);
+                characterAnimator.SetBool("isSprinting", false);
+                combatMode = !combatMode;
+                if (combatMode)
+                {
+                    Quaternion rot = new Quaternion();
+                    rot.eulerAngles = new Vector3(0f, cam.rotation.y * Mathf.Rad2Deg * (180f / 57.5f), 0f);
+                    combatCamRoot.rotation = rot;
+                    combatCam.position = combatCamTarget.position;
+                    Cam.cullingMask = Cam.cullingMask | (1 << 10);
+                }
+                else
+                    Cam.cullingMask = Cam.cullingMask & ~(1 << 10);
+            }
+
+            float distanceToCombatCamera = Vector3.Distance(transform.position, combatCam.position);
+            //Debug.Log(distanceToCombatCamera);
+            if (distanceToCombatCamera > 7 || distanceToCombatCamera < 2.5)
+                combatMode = false;
+
+            cameraAnimator.SetBool("combatMode", combatMode);
+            characterAnimator.SetBool("isInCombatMode", combatMode);
+
+            if (!combatMode)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                moveModeControls();
             }
             else
-                Cam.cullingMask = Cam.cullingMask & ~(1 << 10);
+            {
+                Cursor.lockState = CursorLockMode.None;
+                combatModeControls();
+            }
         }
 
-        float distanceToCombatCamera = Vector3.Distance(transform.position, combatCam.position);
-        //Debug.Log(distanceToCombatCamera);
-        if (distanceToCombatCamera > 7 || distanceToCombatCamera < 2.5)
-            combatMode = false;
-
-        cameraAnimator.SetBool("combatMode", combatMode);
-        characterAnimator.SetBool("isInCombatMode", combatMode);
-
-        if (!combatMode)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            moveModeControls();
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-            combatModeControls();
-        }
-
-        Cursor.visible = combatMode;
     }
 
     void moveModeControls()
