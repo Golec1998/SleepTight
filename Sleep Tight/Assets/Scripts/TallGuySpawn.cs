@@ -18,18 +18,21 @@ public class TallGuySpawn : MonoBehaviour
     Quaternion newAngleL;
     Quaternion newAngleR;
 
+    [Space]
+    public GameObject kid;
+
     void Start()
     {
-        startAngle.eulerAngles = new Vector3(-90, 180, 0);
-        targetAngleL.eulerAngles = new Vector3(-90, 180, target);
-        targetAngleR.eulerAngles = new Vector3(-90, 180, -target);
+        startAngle.eulerAngles = doorL.rotation.eulerAngles;
+        targetAngleL.eulerAngles = new Vector3(doorL.rotation.eulerAngles.x, doorL.rotation.eulerAngles.y, doorL.rotation.eulerAngles.z + target);
+        targetAngleR.eulerAngles = new Vector3(doorR.rotation.eulerAngles.x, doorR.rotation.eulerAngles.y, doorR.rotation.eulerAngles.z - target);
         newAngleL = startAngle;
         newAngleR = startAngle;
     }
 
     void Update()
     {
-        doorL.rotation = Quaternion.Slerp(doorL.rotation, newAngleL, Time.deltaTime * 2f);
+        doorL.rotation = Quaternion.Slerp(doorL.rotation, newAngleL, Time.deltaTime * 2.3f);
         doorR.rotation = Quaternion.Slerp(doorR.rotation, newAngleR, Time.deltaTime * 1.7f);
     }
 
@@ -37,12 +40,13 @@ public class TallGuySpawn : MonoBehaviour
     {
         GameObject tg = Instantiate(TallGuy, transform.position, transform.rotation);
         tg.GetComponent<TallGuyAI>().setPath(path);
+        tg.GetComponent<TallGuyAI>().setKid(kid);
         newAngleL = targetAngleL;
         newAngleR = targetAngleR;
         this.Invoke(() => {
             newAngleL = startAngle;
             newAngleR = startAngle;
-        }, 1f);
+        }, 1.5f);
     }
 
     private void OnDrawGizmos()

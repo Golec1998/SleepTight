@@ -34,14 +34,14 @@ public class KidController : MonoBehaviour
             sleep = maxSleep;
     }
 
-    public void getComfortDamage()
+    public void getComfortDamage(float damage)
     {
-        //TODO
+        comfort -= damage * Time.deltaTime;
     }
 
-    public void getSleepDamage()
+    public void getSleepDamage(float damage)
     {
-        //TODO
+        sleep -= damage * Time.deltaTime;
     }
 
     public float getSleep() { return sleep; }
