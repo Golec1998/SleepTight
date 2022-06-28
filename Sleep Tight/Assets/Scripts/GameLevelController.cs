@@ -62,6 +62,9 @@ public class GameLevelController : MonoBehaviour
     int finalComfortScore = 100;
     int wokenUp = 0;
 
+    bool gameEnded = false;
+    bool scoreOpen = true;
+
     void Start()
     {
         controllVariables();        //Here we make sure that some variables are in range and set start values of the others
@@ -78,10 +81,13 @@ public class GameLevelController : MonoBehaviour
 
         spawnControll();
 
-        if (checkForEndGame())
+        if (gameEnded)
             endGame();
         else
+        {
             countPoints();
+            checkForEndGame();
+        }
 
     }
 
@@ -163,18 +169,14 @@ public class GameLevelController : MonoBehaviour
         //TODO
     }
 
-    bool checkForEndGame()
+    void checkForEndGame()
     {
-        bool condition = false;
-
         if(timeToEnd < 1f) endGameMessage = "win";
         else if(player.GetComponent<PlayerStats>().getHealth() < 0f) endGameMessage = "dead";
         else if(wokenUp >= 3) endGameMessage = "woken";
 
         if(endGameMessage != "-")
-            condition = true;
-
-        return condition;
+            gameEnded = true;
     }
 
     void countPoints()
@@ -199,18 +201,25 @@ public class GameLevelController : MonoBehaviour
 
     void endGame()
     {
-        PauseMenu.canPause = false;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        pauseMenuUI.SetActive(false);
-        gameUI.SetActive(false);
-        endGameUI.SetActive(true);
-        Time.timeScale = 0f;
-        camera.GetComponent<CinemachineFreeLook>().enabled = false;
+        if(scoreOpen)
+        {
+            PauseMenu.canPause = false;
+            PauseMenu.gameIsPaused = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            pauseMenuUI.SetActive(false);
+            gameUI.SetActive(false);
+            endGameUI.SetActive(true);
+            Time.timeScale = 0f;
+            camera.GetComponent<CinemachineFreeLook>().enabled = false;
 
+            sleepPointsText.text = finalSleepScore + "/100";
+            comfortPointsText.text = finalComfortScore + "/100";
+            wokenUpText.text = wokenUp + "/3";
+            pointsText.text = (((finalSleepScore + finalComfortScore) / 2) / (wokenUp + 1)) + "/100";
 
-
-        Debug.Log("oh snap");
+            scoreOpen = false;
+        }
     }
 
 }
