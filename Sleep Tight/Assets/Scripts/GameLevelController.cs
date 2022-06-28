@@ -13,11 +13,11 @@ public class GameLevelController : MonoBehaviour
     int minTallGuysNumber = 0, maxTallGuysNumber = 5;
     
     public GameObject[] PoltergeistSpawnpoints;
-    public int PoltergeistNumber = 1;
+    public int PoltergeistNumber = 0;
     int minPoltergeistNumber = 0, maxPoltergeistNumber = 5;
     
     public GameObject[] StinkerSpawnpoints;
-    public int StinkerNumber = 1;
+    public int StinkerNumber = 0;
     int minStinkerNumber = 0, maxStinkerNumber = 5;
 
     [Space]
@@ -33,6 +33,12 @@ public class GameLevelController : MonoBehaviour
     
     float[] StinkerSpawnTimes = new float[5];
     int StinkerSpawnOrder = 0;
+
+    string endGameMessage = "-";
+    public GameObject pauseMenuUI;
+    public GameObject gameUI;
+    public GameObject endGameUI;
+    public GameObject camera;
 
     void Start()
     {
@@ -136,8 +142,16 @@ public class GameLevelController : MonoBehaviour
     {
         bool condition = false;
 
-        if(player.GetComponent<PlayerStats>().getHealth() < 0f
-            || timeToEnd < 1f)
+        if(player.GetComponent<PlayerStats>().getHealth() < 0f)
+        {
+            endGameMessage = "dead";
+        }
+        if(timeToEnd < 1f)
+        {
+            endGameMessage = "win";
+        }
+
+        if(endGameMessage != "-")
             condition = true;
 
         return condition;
@@ -145,6 +159,8 @@ public class GameLevelController : MonoBehaviour
 
     void endGame()
     {
+        PauseMenu.canPause = false;
+
         Debug.Log("oh snap");
     }
 

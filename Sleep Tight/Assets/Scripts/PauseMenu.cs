@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     
     public static bool gameIsPaused = false;
+    public static bool canPause = true;
     public GameObject pauseMenuUI;
     public GameObject gameUI;
     public GameObject camera;
@@ -17,9 +18,8 @@ public class PauseMenu : MonoBehaviour
         {
             if (gameIsPaused)
                 Resume();
-            else
+            else if(canPause)
                 Pause();
-            Debug.Log("pause pressed");
         }
     }
 
