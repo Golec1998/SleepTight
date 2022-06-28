@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Cinemachine;
 
 public class GameLevelController : MonoBehaviour
 {
 
     public GameObject player;
+    public GameObject kid;
 
     [Space]
     public GameObject[] TallGuySpawnpoints;
@@ -40,12 +43,32 @@ public class GameLevelController : MonoBehaviour
     public GameObject endGameUI;
     public GameObject camera;
 
+    [Space]
+    public GameObject endStats;
+
+    [Space]
+    public Text endGameResultText;
+    public Text sleepPointsText;
+    public Text comfortPointsText;
+    public Text wokenUpText;
+    public Text pointsText;
+    public Text failedText;
+
+    ulong maxSleepResult = 0;
+    ulong sleepResult = 0;
+    int finalSleepScore = 100;
+    ulong maxComfortResult = 0;
+    ulong comfortResult = 0;
+    int finalComfortScore = 100;
+    int wokenUp = 0;
+
     void Start()
     {
         controllVariables();        //Here we make sure that some variables are in range and set start values of the others
 
         setupTallGuysSpawns();
-        
+        setupPoltergeistSpawns();
+        setupStinkerSpawns();
 
     }
 
@@ -57,6 +80,8 @@ public class GameLevelController : MonoBehaviour
 
         if (checkForEndGame())
             endGame();
+        else
+            countPoints();
 
     }
 
@@ -142,14 +167,9 @@ public class GameLevelController : MonoBehaviour
     {
         bool condition = false;
 
-        if(player.GetComponent<PlayerStats>().getHealth() < 0f)
-        {
-            endGameMessage = "dead";
-        }
-        if(timeToEnd < 1f)
-        {
-            endGameMessage = "win";
-        }
+        if(timeToEnd < 1f) endGameMessage = "win";
+        else if(player.GetComponent<PlayerStats>().getHealth() < 0f) endGameMessage = "dead";
+        else if(wokenUp >= 3) endGameMessage = "woken";
 
         if(endGameMessage != "-")
             condition = true;
@@ -157,9 +177,38 @@ public class GameLevelController : MonoBehaviour
         return condition;
     }
 
+    void countPoints()
+    {
+        maxSleepResult += 100;
+        sleepResult += (ulong)kid.GetComponent<KidController>().getSleep();
+        maxComfortResult += 100;
+        comfortResult += (ulong)kid.GetComponent<KidController>().getComfort();
+
+        if(kid.GetComponent<KidController>().getWokenUpCount() > wokenUp)
+        {
+            sleepResult /= 2;
+            comfortResult /= 2;
+            wokenUp++;
+        }
+
+        finalSleepScore = (int)(((float)sleepResult / (float)maxSleepResult) * 100f);
+        finalComfortScore = (int)(((float)comfortResult / (float)maxComfortResult) * 100f);
+
+        Debug.Log("Sleep: " + finalSleepScore + "\nComfort: " + finalComfortScore);
+    }
+
     void endGame()
     {
         PauseMenu.canPause = false;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        pauseMenuUI.SetActive(false);
+        gameUI.SetActive(false);
+        endGameUI.SetActive(true);
+        Time.timeScale = 0f;
+        camera.GetComponent<CinemachineFreeLook>().enabled = false;
+
+
 
         Debug.Log("oh snap");
     }

@@ -6145,7 +6145,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 10738.605
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -6259,7 +6259,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 2157.7166
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -7149,7 +7149,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 10738.605
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -7263,7 +7263,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 2157.7166
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -7418,6 +7418,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 919132148171141992}
+  kid: {fileID: 1932580835}
   TallGuySpawnpoints:
   - {fileID: 974081689}
   - {fileID: 1657310633}
@@ -7431,6 +7432,13 @@ MonoBehaviour:
   gameUI: {fileID: 1296605606}
   endGameUI: {fileID: 68342768}
   camera: {fileID: 902885580}
+  endStats: {fileID: 1997909413}
+  endGameResultText: {fileID: 1286130469}
+  sleepPointsText: {fileID: 1561625760}
+  comfortPointsText: {fileID: 711576215}
+  wokenUpText: {fileID: 1183091975}
+  pointsText: {fileID: 2030511836}
+  failedText: {fileID: 1940736303}
 --- !u!4 &646778544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3076425719514345318, guid: 5a33add70de6f5543b43df188cc607e9, type: 3}
@@ -8315,7 +8323,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 913916123}
-  m_LocalRotation: {x: 0.1672853, y: 0.15800455, z: -0.027171282, w: 0.97278565}
+  m_LocalRotation: {x: 0.16728531, y: 0.15800455, z: -0.027171291, w: 0.97278565}
   m_LocalPosition: {x: 0, y: 5.5700006, z: -11.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9151,7 +9159,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008330628}
-  m_LocalRotation: {x: 0.053965963, y: -0.30263206, z: 0.017165681, w: 0.9514236}
+  m_LocalRotation: {x: 0.053965945, y: -0.30263206, z: 0.017165674, w: 0.9514236}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9944,7 +9952,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 10738.605
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -10058,7 +10066,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 2157.7166
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -10159,6 +10167,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 89.984
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 0ec7c671ecd94b84d9b1a7cc4694ba49, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1bb87c110dc1e224bbcb3f323187fd8f, type: 2}
     - target: {fileID: 919132149155446097, guid: 0ec7c671ecd94b84d9b1a7cc4694ba49, type: 3}
       propertyPath: m_Name
       value: KidsBed
@@ -11587,7 +11599,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 10738.605
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -11701,7 +11713,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 2157.7166
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -12350,7 +12362,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 10738.605
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -12464,7 +12476,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 2157.7166
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -13035,7 +13047,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 10738.605
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -13149,7 +13161,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 2157.7166
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -13340,7 +13352,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 10738.605
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -13454,7 +13466,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 2157.7166
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -13969,7 +13981,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 10738.605
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -14083,7 +14095,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 2157.7166
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -14218,7 +14230,7 @@ GameObject:
   - component: {fileID: 1940736304}
   - component: {fileID: 1940736303}
   m_Layer: 5
-  m_Name: Seen
+  m_Name: Failed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

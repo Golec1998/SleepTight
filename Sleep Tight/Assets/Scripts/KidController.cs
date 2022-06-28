@@ -12,26 +12,36 @@ public class KidController : MonoBehaviour
 
     public float sleepRegenerateRate = 1f;
     public float comfortRegenerateRate = 1f;
+    bool canRegenerate = true;
+
+    int wokenUp = 0;
 
     void Start()
     {
         sleep = maxSleep;
-        comfort = maxComfort / 2f;
+        comfort = maxComfort;
     }
 
     void Update()
     {
-        regenerate();
+        if(canRegenerate)
+            regenerate();
+        else
+            checkSurroundings();
     }
 
     void regenerate()
     {
         if(comfort < maxComfort)
             comfort += Time.deltaTime * comfortRegenerateRate;
-        
+        else if(comfort < 0f)
+            comfort = 0;
+            
         sleep += comfort / maxComfort - 0.5f;
         if(sleep > maxSleep)
             sleep = maxSleep;
+        else if(sleep < 0)
+            wakeUp();
     }
 
     public void getComfortDamage(float damage)
@@ -44,7 +54,27 @@ public class KidController : MonoBehaviour
         sleep -= damage * Time.deltaTime;
     }
 
+    void checkSurroundings()
+    {
+        comfort = 0;
+        sleep = 0;
+        //TODO
+    }
+
+    void wakeUp()
+    {
+        canRegenerate = false;
+        wokenUp++;
+
+        this.Invoke(() => {
+            canRegenerate = true;
+            sleep = maxSleep / 2f;
+            comfort = maxComfort / 2f;
+        }, 3f);
+    }
+
     public float getSleep() { return sleep; }
     public float getComfort() { return comfort; }
+    public float getWokenUpCount() { return wokenUp; }
 
 }

@@ -559,7 +559,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 15408.428
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -673,7 +673,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 3096.0276
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -1153,7 +1153,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 15408.428
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -1267,7 +1267,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 3096.0276
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -2492,7 +2492,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 15408.428
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -2606,7 +2606,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 3096.0276
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -3532,7 +3532,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 15408.428
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -3646,7 +3646,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 3096.0276
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -3906,7 +3906,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 15408.428
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -4020,7 +4020,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 3096.0276
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -4440,7 +4440,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 15408.428
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -4554,7 +4554,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 3096.0276
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -4656,7 +4656,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 15408.428
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -4770,7 +4770,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 3096.0276
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208
@@ -4943,7 +4943,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 37423.312
+  m_Intensity: 15408.428
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 40.9
@@ -5057,7 +5057,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 7519.4956
+  m_Intensity: 3096.0276
   m_Range: 10
   m_SpotAngle: 156
   m_InnerSpotAngle: 21.80208

@@ -38,6 +38,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_8481333518e74fa9a19d8b65f30cbe9d:
+        m_Texture: {fileID: 2800000, guid: 2c9df536a4cc0f54e9971cd989e33d52, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _AnisotropyMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
