@@ -26,7 +26,7 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    void Resume()
+    public void Resume()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -48,4 +48,13 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = true;
     }
 
+    public void Restart()
+    {
+        Debug.Log("Sam se prze³aduj :(");
+    }
+
+    public void Menu()
+    {
+        Debug.Log("Te¿ bym chcia³ wróciæ...");
+    }
 }

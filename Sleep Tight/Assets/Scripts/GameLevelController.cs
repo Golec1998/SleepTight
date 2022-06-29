@@ -45,6 +45,7 @@ public class GameLevelController : MonoBehaviour
 
     [Space]
     public GameObject endStats;
+    public GameObject endFailed;
 
     [Space]
     public Text endGameResultText;
@@ -199,6 +200,7 @@ public class GameLevelController : MonoBehaviour
         //Debug.Log("Sleep: " + finalSleepScore + "\nComfort: " + finalComfortScore);
     }
 
+    [System.Obsolete]
     void endGame()
     {
         if(scoreOpen)
@@ -213,13 +215,29 @@ public class GameLevelController : MonoBehaviour
             Time.timeScale = 0f;
             camera.GetComponent<CinemachineFreeLook>().enabled = false;
 
-            sleepPointsText.text = finalSleepScore + "/100";
-            comfortPointsText.text = finalComfortScore + "/100";
-            wokenUpText.text = wokenUp + "/3";
-            pointsText.text = (((finalSleepScore + finalComfortScore) / 2) / (wokenUp + 1)) + "/100";
+            if (endGameMessage == "win")
+            {
+                sleepPointsText.text = finalSleepScore + "/100";
+                comfortPointsText.text = finalComfortScore + "/100";
+                wokenUpText.text = wokenUp + "/3";
+                pointsText.text = (((finalSleepScore + finalComfortScore) / 2) / (wokenUp + 1)) + "/100";
+            }
+            else
+            {
+                endGameResultText.text = "Game Over";
+                endStats.SetActive(false);
+                endFailed.SetActive(true);
+
+                if (endGameMessage == "dead")
+                    failedText.text = "You've been killed";
+                else if(endGameMessage == "woken")
+                    failedText.text = "The kid woke up too many times";
+            }
 
             scoreOpen = false;
         }
     }
+
+    
 
 }
