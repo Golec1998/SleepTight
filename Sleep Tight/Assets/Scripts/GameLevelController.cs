@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Cinemachine;
 
 public class GameLevelController : MonoBehaviour
@@ -238,6 +239,18 @@ public class GameLevelController : MonoBehaviour
         }
     }
 
-    
+    public void Restart()
+    {
+        //TODO save score
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Menu()
+    {
+        //TODO save score
+
+        SceneManager.LoadScene("Menu");
+    }
 
 }

@@ -23,6 +23,7 @@ public class PoltergeistAI : MonoBehaviour
     int numberOfThrowables;
     bool readyToRotate = false;
     float timeToThrow;
+    bool thrown = false;
 
     Renderer thisEnemy;
     Renderer thisEnemyEyes;
@@ -30,6 +31,7 @@ public class PoltergeistAI : MonoBehaviour
     [Space]
     [Header("For debug only!")]
     public bool returnToOrigin = false;
+    public bool showActiveRadiuses = false;
 
     void Start()
     {
@@ -46,13 +48,21 @@ public class PoltergeistAI : MonoBehaviour
     void Update()
     {
         if(animator.GetBool("isDead"))
+        {
             alive -= 0.5f * Time.deltaTime;
+            if(!thrown)
+                returnThrowables();
+        }
+        else if(thrown)
+            alive -= 0.2f * Time.deltaTime;
         else
             alive += 0.35f * Time.deltaTime;
+
         if(alive < 0f)
             alive = 0f;
         else if(alive > 1f)
             alive = 1f;
+
         thisEnemy.materials[0].SetFloat("_Alive", alive);
         thisEnemyEyes.materials[0].SetFloat("_Alive", alive);
 
@@ -104,6 +114,9 @@ public class PoltergeistAI : MonoBehaviour
     void throwThrowables()
     {
         readyToRotate = false;
+        thrown = true;
+        GetComponent<Collider>().enabled = false;
+        this.Invoke(() => { Destroy(transform.root.gameObject); }, 5f);
 
         for (int i = 0; i < throwables.Length; i++)
         {
@@ -134,15 +147,12 @@ public class PoltergeistAI : MonoBehaviour
     [System.Obsolete]
     public void getDamage()
     {
-        //Debug.Log("Ouch!");
         health -= 3;
         if (health <= 0)
         {
-            //Debug.Log("Dead");
             animator.SetBool("isDead", true);
             thisEnemy.materials[0].SetFloat("Alive", 0);
             GetComponent<Collider>().enabled = false;
-            Destroy(transform.Find("LifeShard").gameObject);
             this.Invoke(() => { Destroy(transform.root.gameObject); }, 5f);
         }
     }
@@ -155,8 +165,11 @@ public class PoltergeistAI : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(throwableChecker.position, 3f);
-        Gizmos.DrawWireSphere(spinner.position, 0.5f);
+        if(showActiveRadiuses)
+        {
+            Gizmos.DrawWireSphere(throwableChecker.position, 3f);
+            Gizmos.DrawWireSphere(spinner.position, 0.5f);
+        }
     }
 
 }

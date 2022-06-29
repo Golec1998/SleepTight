@@ -51,15 +51,13 @@ public class TallGuyAI : MonoBehaviour
     [System.Obsolete]
     public void getDamage()
     {
-        //Debug.Log("Ouch!");
         health -= 3;
         if (health <= 0)
         {
-            //Debug.Log("Dead");
+            canAttack = false;
             animator.SetBool("isDead", true);
             thisEnemy.materials[1].SetFloat("_Alive", 0);
             GetComponent<Collider>().enabled = false;
-            //Destroy(transform.FindChild("LifeShard").gameObject);
             this.Invoke(() => { Destroy(transform.root.gameObject); }, 5f);
         }
     }
