@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Cinemachine;
 
 public class PauseMenu : MonoBehaviour
@@ -11,6 +12,11 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject gameUI;
     public GameObject camera;
+
+    void Start()
+    {
+        Resume();
+    }
 
     void Update()
     {
@@ -50,11 +56,11 @@ public class PauseMenu : MonoBehaviour
 
     public void Restart()
     {
-        Debug.Log("Sam se prze³aduj :(");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Menu()
     {
-        Debug.Log("Te¿ bym chcia³ wróciæ...");
+        SceneManager.LoadScene("Menu");
     }
 }

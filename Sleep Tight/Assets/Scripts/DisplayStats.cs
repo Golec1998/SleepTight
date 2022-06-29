@@ -21,7 +21,7 @@ public class DisplayStats : MonoBehaviour
 
     [Space]
     public RawImage[] playerImg;
-    int playerImgId = 8;
+    public RawImage[] kidImg;
 
     void Update()
     {
@@ -33,15 +33,20 @@ public class DisplayStats : MonoBehaviour
         sleep.value = kid.GetComponent<KidController>().getSleep() / kid.GetComponent<KidController>().maxSleep;
         comfort.value = kid.GetComponent<KidController>().getComfort() / kid.GetComponent<KidController>().maxComfort;
 
+        choosePlayerImg();
+        //chooseKidImg();
+        
+    }
 
-
-        if(sleep.value > 0.6f)
+    void choosePlayerImg()
+    {
+        if(hp.value > 0.6f)
         {
-            if (comfort.value > 0.6f)
+            if (energy.value > 0.6f)
             {
                 showPlayerImg(8);
             }
-            else if (comfort.value > 0.3f)
+            else if (energy.value > 0.3f)
             {
                 showPlayerImg(7);
             }
@@ -50,13 +55,13 @@ public class DisplayStats : MonoBehaviour
                 showPlayerImg(6);
             }
         }
-        else if(sleep.value > 0.3f)
+        else if(hp.value > 0.3f)
         {
-            if (comfort.value > 0.6f)
+            if (energy.value > 0.6f)
             {
                 showPlayerImg(5);
             }
-            else if (comfort.value > 0.3f)
+            else if (energy.value > 0.3f)
             {
                 showPlayerImg(4);
             }
@@ -67,11 +72,11 @@ public class DisplayStats : MonoBehaviour
         }
         else
         {
-            if (comfort.value > 0.6f)
+            if (energy.value > 0.6f)
             {
                 showPlayerImg(2);
             }
-            else if (comfort.value > 0.3f)
+            else if (energy.value > 0.3f)
             {
                 showPlayerImg(1);
             }
@@ -90,4 +95,63 @@ public class DisplayStats : MonoBehaviour
             else
                 playerImg[i].enabled = false;
     }
+
+    void chooseKidImg()
+    {
+        if(sleep.value > 0.6f)
+        {
+            if (comfort.value > 0.6f)
+            {
+                showKidImg(8);
+            }
+            else if (comfort.value > 0.3f)
+            {
+                showKidImg(7);
+            }
+            else
+            {
+                showKidImg(6);
+            }
+        }
+        else if(sleep.value > 0.3f)
+        {
+            if (comfort.value > 0.6f)
+            {
+                showKidImg(5);
+            }
+            else if (comfort.value > 0.3f)
+            {
+                showKidImg(4);
+            }
+            else
+            {
+                showKidImg(3);
+            }
+        }
+        else
+        {
+            if (comfort.value > 0.6f)
+            {
+                showKidImg(2);
+            }
+            else if (comfort.value > 0.3f)
+            {
+                showKidImg(1);
+            }
+            else
+            {
+                showKidImg(0);
+            }
+        }
+    }
+
+    void showKidImg(int id)
+    {
+        for(int i = 0; i < 9; i++)
+            if(i == id)
+                kidImg[i].enabled = true;
+            else
+                kidImg[i].enabled = false;
+    }
+
 }

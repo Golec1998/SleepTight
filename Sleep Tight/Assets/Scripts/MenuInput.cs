@@ -12,6 +12,7 @@ public class MenuInput : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         cam = Camera.main;
     }
 
