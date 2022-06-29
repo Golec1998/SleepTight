@@ -119,7 +119,7 @@ public class GameLevelController : MonoBehaviour
         {
             float nextTallGuysSpawnTimes = Random.Range(0, (safeTime / (TallGuysNumber * 2))) + (safeTime / TallGuysNumber) * i + 30f;
             TallGuysSpawnTimes[TallGuysNumber - i - 1] = nextTallGuysSpawnTimes;
-            Debug.Log(nextTallGuysSpawnTimes);
+            //Debug.Log(nextTallGuysSpawnTimes);
         }
     }
 
@@ -196,7 +196,7 @@ public class GameLevelController : MonoBehaviour
         finalSleepScore = (int)(((float)sleepResult / (float)maxSleepResult) * 100f);
         finalComfortScore = (int)(((float)comfortResult / (float)maxComfortResult) * 100f);
 
-        Debug.Log("Sleep: " + finalSleepScore + "\nComfort: " + finalComfortScore);
+        //Debug.Log("Sleep: " + finalSleepScore + "\nComfort: " + finalComfortScore);
     }
 
     void endGame()
