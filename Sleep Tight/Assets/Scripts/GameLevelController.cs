@@ -63,6 +63,7 @@ public class GameLevelController : MonoBehaviour
     ulong comfortResult = 0;
     int finalComfortScore = 100;
     int wokenUp = 0;
+    int finalScore = 100;
 
     bool gameEnded = false;
     bool scoreOpen = true;
@@ -197,6 +198,7 @@ public class GameLevelController : MonoBehaviour
 
         finalSleepScore = (int)(((float)sleepResult / (float)maxSleepResult) * 100f);
         finalComfortScore = (int)(((float)comfortResult / (float)maxComfortResult) * 100f);
+        finalScore = (finalSleepScore + finalComfortScore) / 2;
 
         //Debug.Log("Sleep: " + finalSleepScore + "\nComfort: " + finalComfortScore);
     }
@@ -221,7 +223,7 @@ public class GameLevelController : MonoBehaviour
                 sleepPointsText.text = finalSleepScore + "/100";
                 comfortPointsText.text = finalComfortScore + "/100";
                 wokenUpText.text = wokenUp + "/3";
-                pointsText.text = ((finalSleepScore + finalComfortScore) / 2) + "/100";
+                pointsText.text = finalScore + "/100";
             }
             else
             {
@@ -241,14 +243,14 @@ public class GameLevelController : MonoBehaviour
 
     public void Restart()
     {
-        //TODO save score
+        SaveSystem.SaveData(SceneManager.GetActiveScene().name, finalScore);
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void Menu()
     {
-        //TODO save score
+        SaveSystem.SaveData(SceneManager.GetActiveScene().name, finalScore);
 
         SceneManager.LoadScene("Menu");
     }

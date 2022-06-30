@@ -10,10 +10,21 @@ public class MenuInput : MonoBehaviour
     public LayerMask menuLayer;
     Camera cam;
 
+    [Space]
+    public GameObject stage2PhotoFrame;
+
     void Start()
     {
         Time.timeScale = 1f;
         cam = Camera.main;
+
+        GameSave stage1 = SaveSystem.LoadData("TestWorld");
+        if(stage1 != null)
+            if(stage1.lvlScore > 0)
+            {
+                Debug.Log("Stage 1 score: " + stage1.lvlScore);
+                stage2PhotoFrame.SetActive(true);
+            }
     }
 
     void Update()

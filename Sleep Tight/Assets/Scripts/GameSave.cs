@@ -6,9 +6,9 @@ using UnityEngine;
 public class GameSave
 {
     
-    public float lvlScore;
+    public int lvlScore;
 
-    public GameSave(float points)
+    public GameSave(int points)
     {
         lvlScore = points;
     }
