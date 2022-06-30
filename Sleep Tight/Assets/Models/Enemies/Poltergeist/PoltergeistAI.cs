@@ -74,7 +74,7 @@ public class PoltergeistAI : MonoBehaviour
 
     void collectThrowables()
     {
-        throwables = Physics.OverlapSphere(throwableChecker.position, 3f, throwableLayer);
+        throwables = Physics.OverlapSphere(throwableChecker.position, 2f, throwableLayer);
         numberOfThrowables = throwables.Length;
         if (numberOfThrowables > 5)
             numberOfThrowables = 5;
@@ -155,6 +155,8 @@ public class PoltergeistAI : MonoBehaviour
             GetComponent<Collider>().enabled = false;
             this.Invoke(() => { Destroy(transform.root.gameObject); }, 5f);
         }
+        else
+            animator.SetTrigger("isAttacked");
     }
 
     void regenerate()
@@ -167,7 +169,7 @@ public class PoltergeistAI : MonoBehaviour
     {
         if(showActiveRadiuses)
         {
-            Gizmos.DrawWireSphere(throwableChecker.position, 3f);
+            Gizmos.DrawWireSphere(throwableChecker.position, 2f);
             Gizmos.DrawWireSphere(spinner.position, 0.5f);
         }
     }

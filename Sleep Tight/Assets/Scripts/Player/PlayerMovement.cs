@@ -322,7 +322,18 @@ public class PlayerMovement : MonoBehaviour
     {
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
         foreach (Collider enemy in hitEnemies)
-            enemy.GetComponent<TallGuyAI>().getDamage();
+        {
+            Debug.Log(enemy.tag);
+            switch(enemy.tag)
+            {
+                case "TallGuy":
+                    enemy.GetComponent<TallGuyAI>().getDamage();
+                    break;
+                case "Poltergeist":
+                    enemy.GetComponent<PoltergeistAI>().getDamage();
+                    break;
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()

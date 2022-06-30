@@ -46,6 +46,8 @@ public class TallGuyAI : MonoBehaviour
 
         regenerate();
 
+        animator.SetBool("canMove", canMove);
+        animator.SetBool("canAttack", canAttack);
     }
 
     [System.Obsolete]
@@ -108,8 +110,6 @@ public class TallGuyAI : MonoBehaviour
 
     void invokeNightmares()
     {
-        //TODO
-
         //Rotate to kid
         Quaternion targetRotation = Quaternion.identity;
         Vector3 targetDirection = (kid.transform.position - transform.position).normalized;
@@ -117,8 +117,8 @@ public class TallGuyAI : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * 150f);
 
         //Attack kid
-        kid.GetComponent<KidController>().getComfortDamage(2.5f);
-        kid.GetComponent<KidController>().getSleepDamage(1.2f);
+        kid.GetComponent<KidController>().getComfortDamage(2.6f * Time.deltaTime);
+        kid.GetComponent<KidController>().getSleepDamage(1.7f * Time.deltaTime);
     }
 
 }

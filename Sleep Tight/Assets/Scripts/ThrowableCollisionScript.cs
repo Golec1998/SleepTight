@@ -5,6 +5,8 @@ using UnityEngine;
 public class ThrowableCollisionScript : MonoBehaviour
 {
 
+    public Transform kid;
+
     void OnCollisionEnter(Collision collision)
     {
         foreach (ContactPoint contact in collision.contacts)
@@ -13,7 +15,11 @@ public class ThrowableCollisionScript : MonoBehaviour
         }
 
         if (collision.relativeVelocity.magnitude > 0.5f)
-            Debug.Log(collision.relativeVelocity.magnitude);
+        {
+            Debug.Log("Velocity: " + (collision.relativeVelocity.magnitude / Vector3.Distance(kid.position, transform.position)));
+            kid.GetComponent<KidController>().getSleepDamage((collision.relativeVelocity.magnitude / Vector3.Distance(kid.position, transform.position)) * 6f);
+            kid.GetComponent<KidController>().getComfortDamage((collision.relativeVelocity.magnitude / Vector3.Distance(kid.position, transform.position)) * 4f);
+        }
     }
 
 }

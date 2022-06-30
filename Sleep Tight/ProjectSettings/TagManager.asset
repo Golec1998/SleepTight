@@ -13,6 +13,8 @@ TagManager:
   - ExitButton
   - Stage1
   - Back
+  - TallGuy
+  - Poltergeist
   layers:
   - Default
   - TransparentFX

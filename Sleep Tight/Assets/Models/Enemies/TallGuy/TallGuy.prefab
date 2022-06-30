@@ -822,7 +822,7 @@ GameObject:
   - component: {fileID: 2781024716156534757}
   m_Layer: 7
   m_Name: TallGuy
-  m_TagString: Untagged
+  m_TagString: TallGuy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -892,6 +892,7 @@ MonoBehaviour:
   maxHealth: 20
   regenerationSpeed: 1
   animator: {fileID: 8643175793204109662}
+  kid: {fileID: 0}
 --- !u!1 &3144779245901051871
 GameObject:
   m_ObjectHideFlags: 0

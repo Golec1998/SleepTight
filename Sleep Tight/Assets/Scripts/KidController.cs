@@ -37,7 +37,7 @@ public class KidController : MonoBehaviour
         else if(comfort < 0f)
             comfort = 0;
             
-        sleep += comfort / maxComfort - 0.5f;
+        sleep += (comfort / maxComfort - 0.5f) * sleepRegenerateRate * Time.deltaTime;
         if(sleep > maxSleep)
             sleep = maxSleep;
         else if(sleep < 0)
@@ -46,12 +46,12 @@ public class KidController : MonoBehaviour
 
     public void getComfortDamage(float damage)
     {
-        comfort -= damage * Time.deltaTime;
+        comfort -= damage;
     }
 
     public void getSleepDamage(float damage)
     {
-        sleep -= damage * Time.deltaTime;
+        sleep -= damage;
     }
 
     void checkSurroundings()
