@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public float runAcceleration = 15f;
     public float runDeacceleration = 8f;
     public float attackCooldown = 0.3f;
+    public float attackEnergy = 10f;
 
     [Space]
 
@@ -178,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
             isSprinting = false;
         }
 
-        if (Input.GetButtonDown("Attack") && canAttack)
+        if (Input.GetButtonDown("Attack") && canAttack && transform.GetComponent<PlayerStats>().useEnergy(attackEnergy))
         {
             foreach (ParticleSystem trail in attackTrail)
                 trail.enableEmission = true;

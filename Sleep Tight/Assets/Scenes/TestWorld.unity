@@ -8498,6 +8498,7 @@ MonoBehaviour:
   runAcceleration: 20
   runDeacceleration: 20
   attackCooldown: 0.6
+  attackEnergy: 10
   jumpPower: 5
   multiJumpPower: 3.5
   multiJumpCount: 1
@@ -8574,6 +8575,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   maxEnergy: 50
+  healthRegenerateRate: 1
+  energyRegenerateRate: 1
   isDying: 0
 --- !u!1 &822457927 stripped
 GameObject:
@@ -17527,6 +17530,14 @@ PrefabInstance:
     - target: {fileID: 8270922814557778400, guid: d390e34ff215d86409aaf10f997f2f5d, type: 3}
       propertyPath: maxHealth
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270922814557778400, guid: d390e34ff215d86409aaf10f997f2f5d, type: 3}
+      propertyPath: energyRegenerateRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270922814557778400, guid: d390e34ff215d86409aaf10f997f2f5d, type: 3}
+      propertyPath: healthRegenerateRate
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8270922814557778404, guid: d390e34ff215d86409aaf10f997f2f5d, type: 3}
       propertyPath: Cam

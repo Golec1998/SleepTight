@@ -9,6 +9,8 @@ public class PlayerStats : MonoBehaviour
     public float maxHealth;
     float energy;
     public float maxEnergy;
+    public float healthRegenerateRate;
+    public float energyRegenerateRate;
 
     [Space]
     [Header ("For debug only")]
@@ -22,7 +24,7 @@ public class PlayerStats : MonoBehaviour
 
     void Update()
     {
-
+        regenerate();
 
 
         //Debug
@@ -35,5 +37,31 @@ public class PlayerStats : MonoBehaviour
 
     public float getHealth() { return health; }
     public float getEnergy() { return energy; }
+
+    void regenerate()
+    {
+        energy += energyRegenerateRate * Time.deltaTime;
+        if(energy > maxEnergy)
+            energy = maxEnergy;
+        else if(energy < 0)
+            energy = 0;
+
+        health += ((energy / maxEnergy) - 0.2f) * healthRegenerateRate * Time.deltaTime;
+        if(health > maxHealth)
+            health = maxHealth;
+    }
+
+    public bool useEnergy(float amount)
+    {
+        bool result = false;
+
+        if(energy > amount)
+        {
+            result = true;
+            energy -= amount;
+        }
+
+        return result;
+    }
 
 }
