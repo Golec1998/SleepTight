@@ -10,13 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public Camera Cam;
     public Transform groundCheck;
     public LayerMask groundMask;
-    public Transform combatCam;
     public Transform moveCam;
-    public Transform combatCamRoot;
-    public Transform combatCamTarget;
-    public Animator cameraAnimator;
     public Animator characterAnimator;
-    public LayerMask combatUI;
 
     [Space]
 
@@ -29,13 +24,6 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 7f;
     public float runAcceleration = 15f;
     public float runDeacceleration = 8f;
-
-    [Space]
-
-    public float combatSpeed = 2f;
-    public float combatDeacceleration = 5f;
-    public float dashSpeed = 10f;
-    public float dashCooldown = 0.5f;
     public float attackCooldown = 0.3f;
 
     [Space]
@@ -74,8 +62,6 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded = true;
     bool isMoving = false;
     bool isSprinting = false;
-    bool combatMode = false;
-    bool canDash = true;
     bool canAttack = true;
 
     [System.Obsolete]
@@ -93,45 +79,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if(!PauseMenu.gameIsPaused)
         {
-            if (Input.GetButtonDown("CombatMode"))
-            {
-                characterAnimator.SetBool("isMoving", false);
-                characterAnimator.SetBool("isSprinting", false);
-                combatMode = !combatMode;
-                if (combatMode)
-                {
-                    Quaternion rot = new Quaternion();
-                    rot.eulerAngles = new Vector3(0f, cam.rotation.y * Mathf.Rad2Deg * (180f / 57.5f), 0f);
-                    combatCamRoot.rotation = rot;
-                    combatCam.position = combatCamTarget.position;
-                    Cam.cullingMask = Cam.cullingMask | (1 << 10);
-                }
-                else
-                    Cam.cullingMask = Cam.cullingMask & ~(1 << 10);
-                
-                Cursor.visible = combatMode;
-            }
-
-            float distanceToCombatCamera = Vector3.Distance(transform.position, combatCam.position);
-            //Debug.Log(distanceToCombatCamera);
-            if (distanceToCombatCamera > 7 || distanceToCombatCamera < 2.5)
-                combatMode = false;
-
-            cameraAnimator.SetBool("combatMode", combatMode);
-            characterAnimator.SetBool("isInCombatMode", combatMode);
-
-            if (!combatMode)
-            {
-                Cursor.lockState = CursorLockMode.Locked;
                 moveModeControls();
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.None;
-                combatModeControls();
-            }
         }
-
     }
 
     void moveModeControls()
@@ -229,6 +178,16 @@ public class PlayerMovement : MonoBehaviour
             isSprinting = false;
         }
 
+        if (Input.GetButtonDown("Attack") && canAttack)
+        {
+            foreach (ParticleSystem trail in attackTrail)
+                trail.enableEmission = true;
+            canAttack = false;
+            speed = 0;
+            characterAnimator.SetTrigger("attack");
+            this.Invoke(() => { canAttack = true; foreach (ParticleSystem trail in attackTrail) trail.enableEmission = false; }, attackCooldown);
+        }
+
         characterAnimator.SetBool("isMoving", isMoving);
         characterAnimator.SetBool("isSprinting", isSprinting);
 
@@ -241,7 +200,7 @@ public class PlayerMovement : MonoBehaviour
         velocity.y -= gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
-
+/*
     [System.Obsolete]
     void combatModeControls()
     {
@@ -317,7 +276,7 @@ public class PlayerMovement : MonoBehaviour
             transform.forward = _direction;
         }
     }
-
+*/
     public void dealDamage()
     {
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
@@ -340,5 +299,4 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
-
 }
