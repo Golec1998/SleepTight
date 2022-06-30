@@ -221,7 +221,7 @@ public class GameLevelController : MonoBehaviour
                 sleepPointsText.text = finalSleepScore + "/100";
                 comfortPointsText.text = finalComfortScore + "/100";
                 wokenUpText.text = wokenUp + "/3";
-                pointsText.text = (((finalSleepScore + finalComfortScore) / 2) / (wokenUp + 1)) + "/100";
+                pointsText.text = ((finalSleepScore + finalComfortScore) / 2) + "/100";
             }
             else
             {
