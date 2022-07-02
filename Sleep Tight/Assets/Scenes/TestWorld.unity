@@ -11323,7 +11323,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008330628}
-  m_LocalRotation: {x: 0.053965963, y: -0.30263206, z: 0.017165681, w: 0.9514236}
+  m_LocalRotation: {x: 0.053965945, y: -0.30263206, z: 0.017165674, w: 0.9514236}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -17968,8 +17968,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bath
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 58cbde0c9140a3444a7c95b85746a5b3, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58cbde0c9140a3444a7c95b85746a5b3, type: 3}
+--- !u!1 &2045334453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 58cbde0c9140a3444a7c95b85746a5b3, type: 3}
+  m_PrefabInstance: {fileID: 2045334452}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &2045334454
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2045334453}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2959467708922500008, guid: b6bd82aa58557c6489eac25e1d27bb43, type: 3}
 --- !u!1 &2067433937
 GameObject:
   m_ObjectHideFlags: 3
