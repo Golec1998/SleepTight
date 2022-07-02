@@ -102,7 +102,7 @@ public class PoltergeistAI : MonoBehaviour
 
         for(int i = 0; i < numberOfThrowables; i++)
         {
-            Transform tempThrowable = throwables[i].transform.FindChild("ThrowableOrigin").transform;
+            Transform tempThrowable = throwables[i].transform.Find("ThrowableOrigin").transform;
             tempThrowable.position = Vector3.Lerp(tempThrowable.position, new Vector3(throwableSlots[throwablePosition[i]].position.x, throwableSlots[throwablePosition[i]].position.y + Random.Range(-0.15f, 0.15f), throwableSlots[throwablePosition[i]].position.z), Time.deltaTime * 2f);
             tempThrowable.eulerAngles = Vector3.Lerp(tempThrowable.position, new Vector3(Random.Range(-45f, 45f), Random.Range(-180f, 180f), Random.Range(-45f, 45f)), Time.deltaTime * 2f);
         }
@@ -120,7 +120,7 @@ public class PoltergeistAI : MonoBehaviour
 
         for (int i = 0; i < throwables.Length; i++)
         {
-            Transform tempThrowable = throwables[i].transform.FindChild("ThrowableOrigin").transform;
+            Transform tempThrowable = throwables[i].transform.Find("ThrowableOrigin").transform;
             tempThrowable.gameObject.AddComponent<Rigidbody>();
             tempThrowable.GetComponent<Rigidbody>().AddForce(
                     (tempThrowable.position.x - spinner.position.x) * 13f,
@@ -138,7 +138,7 @@ public class PoltergeistAI : MonoBehaviour
 
         for (int i = 0; i < numberOfThrowables; i++)
         {
-            Transform tempThrowable = throwables[i].transform.FindChild("ThrowableOrigin").transform;
+            Transform tempThrowable = throwables[i].transform.Find("ThrowableOrigin").transform;
             tempThrowable.position = Vector3.Lerp(tempThrowable.position, tempThrowable.parent.transform.position, Time.deltaTime * 2f);
             tempThrowable.eulerAngles = new Vector3(0, 0, 0);
         }

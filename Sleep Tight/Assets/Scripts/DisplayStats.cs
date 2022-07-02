@@ -98,13 +98,13 @@ public class DisplayStats : MonoBehaviour
 
     void chooseKidImg()
     {
-        if(sleep.value > 0.6f)
+        if(comfort.value > 0.6f)
         {
-            if (comfort.value > 0.6f)
+            if (sleep.value > 0.6f)
             {
                 showKidImg(8);
             }
-            else if (comfort.value > 0.3f)
+            else if (sleep.value > 0.3f)
             {
                 showKidImg(7);
             }
@@ -113,13 +113,13 @@ public class DisplayStats : MonoBehaviour
                 showKidImg(6);
             }
         }
-        else if(sleep.value > 0.3f)
+        else if(comfort.value > 0.3f)
         {
-            if (comfort.value > 0.6f)
+            if (sleep.value > 0.6f)
             {
                 showKidImg(5);
             }
-            else if (comfort.value > 0.3f)
+            else if (sleep.value > 0.3f)
             {
                 showKidImg(4);
             }
@@ -130,11 +130,11 @@ public class DisplayStats : MonoBehaviour
         }
         else
         {
-            if (comfort.value > 0.6f)
+            if (sleep.value > 0.6f)
             {
                 showKidImg(2);
             }
-            else if (comfort.value > 0.3f)
+            else if (sleep.value > 0.3f)
             {
                 showKidImg(1);
             }
