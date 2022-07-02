@@ -34,7 +34,7 @@ public class DisplayStats : MonoBehaviour
         comfort.value = kid.GetComponent<KidController>().getComfort() / kid.GetComponent<KidController>().maxComfort;
 
         choosePlayerImg();
-        //chooseKidImg();
+        chooseKidImg();
         
     }
 
