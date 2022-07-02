@@ -15,6 +15,11 @@ TagManager:
   - Back
   - TallGuy
   - Poltergeist
+  - ResUp
+  - ResDown
+  - VolUp
+  - VolDown
+  - Source
   layers:
   - Default
   - TransparentFX
