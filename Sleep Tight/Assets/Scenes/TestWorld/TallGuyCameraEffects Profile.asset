@@ -28,12 +28,12 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.3
+    m_Value: 0.06
     min: 0
     max: 1
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.659
+    m_Value: 0.7
     min: 0.01
     max: 1
   roundness:
@@ -152,7 +152,7 @@ MonoBehaviour:
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 7.0571427
+    m_Value: 3.9528458
   compensation:
     m_OverrideState: 0
     m_Value: 0

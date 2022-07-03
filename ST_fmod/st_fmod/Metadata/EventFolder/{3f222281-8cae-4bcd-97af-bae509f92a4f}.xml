@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EventFolder" id="{3f222281-8cae-4bcd-97af-bae509f92a4f}">
+		<property name="name">
+			<value>Poltergeist</value>
+		</property>
+		<relationship name="folder">
+			<destination>{ccf021b7-1c54-4bb1-9d87-9a97552c116c}</destination>
+		</relationship>
+	</object>
+</objects>

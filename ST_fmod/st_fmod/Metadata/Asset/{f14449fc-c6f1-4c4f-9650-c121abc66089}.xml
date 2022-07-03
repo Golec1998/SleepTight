@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{f14449fc-c6f1-4c4f-9650-c121abc66089}">
+		<property name="assetPath">
+			<value>Sfx/Enemies/Poltergeist/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1fe246e7-ea45-4a8b-8d46-2020947b86eb}</destination>
+		</relationship>
+	</object>
+</objects>

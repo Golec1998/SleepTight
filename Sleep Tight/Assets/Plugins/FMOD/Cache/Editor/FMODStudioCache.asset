@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: ../ST_fmod/st_fmod/Build/Desktop/sfx.bank
   Name: sfx
   StudioPath: bank:/sfx
-  lastModified: 637924565749924353
+  lastModified: 637924587133688749
   FileSizes:
   - Name: Desktop
-    Value: 352096
+    Value: 494
   Exists: 1
 --- !u!114 &-7871618451216938592
 MonoBehaviour:
@@ -63,7 +63,7 @@ MonoBehaviour:
     Data3: -205241208
     Data4: 76406434
   Banks:
-  - {fileID: -8202463705845145739}
+  - {fileID: 4827162156469479904}
   IsStream: 0
   Is3D: 1
   IsOneShot: 1
@@ -93,13 +93,41 @@ MonoBehaviour:
   - {fileID: -3247775777794737264}
   - {fileID: 6682514992422210277}
   - {fileID: 6018696224004098553}
+  - {fileID: 138700115629488481}
   EditorParameters: []
   MasterBanks:
   - {fileID: 4827162156469479904}
   StringsBanks:
   - {fileID: 422955375201296252}
-  cacheTime: 637924565749924353
+  cacheTime: 637924587133688749
   cacheVersion: 131591
+--- !u!114 &138700115629488481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Enemies/Poltergeist/Wolololo
+  m_EditorClassIdentifier: 
+  Path: event:/Enemies/Poltergeist/Wolololo
+  Guid:
+    Data1: 816473141
+    Data2: 1158265765
+    Data3: 1967801017
+    Data4: 1726777136
+  Banks:
+  - {fileID: 4827162156469479904}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 22854
 --- !u!114 &422955375201296252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,10 +143,10 @@ MonoBehaviour:
   Path: ../ST_fmod/st_fmod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637924565747417888
+  lastModified: 637924587133678937
   FileSizes:
   - Name: Desktop
-    Value: 1028
+    Value: 1088
   Exists: 1
 --- !u!114 &3751611732006770708
 MonoBehaviour:
@@ -159,10 +187,10 @@ MonoBehaviour:
   Path: ../ST_fmod/st_fmod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637924565747397894
+  lastModified: 637924587133648760
   FileSizes:
   - Name: Desktop
-    Value: 1036
+    Value: 630976
   Exists: 1
 --- !u!114 &6018696224004098553
 MonoBehaviour:
@@ -183,7 +211,7 @@ MonoBehaviour:
     Data3: -1253663838
     Data4: 1045068913
   Banks:
-  - {fileID: -8202463705845145739}
+  - {fileID: 4827162156469479904}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1
@@ -210,7 +238,7 @@ MonoBehaviour:
     Data3: 983670716
     Data4: -512522024
   Banks:
-  - {fileID: -8202463705845145739}
+  - {fileID: 4827162156469479904}
   IsStream: 0
   Is3D: 0
   IsOneShot: 1

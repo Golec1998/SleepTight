@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class PoltergeistAI : MonoBehaviour
 {
@@ -24,6 +26,7 @@ public class PoltergeistAI : MonoBehaviour
     bool readyToRotate = false;
     float timeToThrow;
     bool thrown = false;
+    string eventPath = "event:/Enemies/Poltergeist/Wolololo";
 
     Renderer thisEnemy;
     Renderer thisEnemyEyes;
@@ -42,6 +45,8 @@ public class PoltergeistAI : MonoBehaviour
 
         collectThrowables();
         this.Invoke(() => { readyToRotate = true; timeToThrow = Time.time + 10f; }, 3f);
+
+        playSound();
     }
 
     [System.Obsolete]
@@ -163,6 +168,15 @@ public class PoltergeistAI : MonoBehaviour
     {
         if (!animator.GetBool("isDead") && health < maxHealth)
             health += regenerationSpeed * Time.deltaTime;
+    }
+
+    void playSound()
+    {
+        EventInstance Sound = RuntimeManager.CreateInstance(eventPath);
+        RuntimeManager.AttachInstanceToGameObject(Sound, transform, GetComponent<Rigidbody>());
+
+        Sound.start();
+        Sound.release();
     }
 
     private void OnDrawGizmos()
