@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
 
+    public Transform kid;
     float health;
     public float maxHealth;
     float energy;
@@ -40,13 +41,19 @@ public class PlayerStats : MonoBehaviour
 
     void regenerate()
     {
-        energy += energyRegenerateRate * Time.deltaTime;
+        float regenerateMultiplier = 1f;
+        float dist = Vector3.Distance(transform.position, kid.position);
+
+        if(dist < 3.5f)
+            regenerateMultiplier = 7f / dist;
+
+        energy += energyRegenerateRate * Time.deltaTime * regenerateMultiplier;
         if(energy > maxEnergy)
             energy = maxEnergy;
         else if(energy < 0)
             energy = 0;
 
-        health += ((energy / maxEnergy) - 0.2f) * healthRegenerateRate * Time.deltaTime;
+        health += ((energy / maxEnergy) - 0.2f) * healthRegenerateRate * Time.deltaTime * regenerateMultiplier;
         if(health > maxHealth)
             health = maxHealth;
     }
