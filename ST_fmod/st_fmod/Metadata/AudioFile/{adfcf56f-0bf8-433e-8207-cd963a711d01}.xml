@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{adfcf56f-0bf8-433e-8207-cd963a711d01}">
+		<property name="assetPath">
+			<value>Sfx/Objects/Wardrobe/Scretching/Scretching4.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.3939375000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1fe246e7-ea45-4a8b-8d46-2020947b86eb}</destination>
+		</relationship>
+	</object>
+</objects>

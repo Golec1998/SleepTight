@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class TallGuySpawn : MonoBehaviour
 {
@@ -21,6 +23,8 @@ public class TallGuySpawn : MonoBehaviour
     [Space]
     public GameObject kid;
 
+    string eventPath = "event:/Objects/Wardrobe/Scretching";
+
     void Start()
     {
         startAngle.eulerAngles = doorL.rotation.eulerAngles;
@@ -36,6 +40,7 @@ public class TallGuySpawn : MonoBehaviour
         doorR.rotation = Quaternion.Slerp(doorR.rotation, newAngleR, Time.deltaTime * 1.7f);
     }
 
+    [System.Obsolete]
     public void spawn()
     {
         GameObject tg = Instantiate(TallGuy, transform.position, transform.rotation);
@@ -46,7 +51,19 @@ public class TallGuySpawn : MonoBehaviour
         this.Invoke(() => {
             newAngleL = startAngle;
             newAngleR = startAngle;
+            playSound();
         }, 1.5f);
+
+        playSound();
+    }
+
+    void playSound()
+    {
+        EventInstance Sound = RuntimeManager.CreateInstance(eventPath);
+        RuntimeManager.AttachInstanceToGameObject(Sound, transform, GetComponent<Rigidbody>());
+
+        Sound.start();
+        Sound.release();
     }
 
     private void OnDrawGizmos()

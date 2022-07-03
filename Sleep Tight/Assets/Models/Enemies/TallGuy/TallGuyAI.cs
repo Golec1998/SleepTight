@@ -57,6 +57,7 @@ public class TallGuyAI : MonoBehaviour
         if (health <= 0)
         {
             canAttack = false;
+            canMove = false;
             animator.SetBool("isDead", true);
             thisEnemy.materials[1].SetFloat("_Alive", 0);
             GetComponent<Collider>().enabled = false;
@@ -117,8 +118,8 @@ public class TallGuyAI : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime * 150f);
 
         //Attack kid
-        kid.GetComponent<KidController>().getComfortDamage(2.6f * Time.deltaTime);
-        kid.GetComponent<KidController>().getSleepDamage(1.7f * Time.deltaTime);
+        kid.GetComponent<KidController>().getComfortDamage(3f * Time.deltaTime);
+        kid.GetComponent<KidController>().getSleepDamage(1.9f * Time.deltaTime);
     }
 
 }

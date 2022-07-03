@@ -10,6 +10,7 @@ public class KumaFootsteps : MonoBehaviour
     int materialVal;
     RaycastHit rh;
     string eventPath = "event:/Player/Footsteps";
+    public Transform kid;
     public LayerMask lm;
 
     void walkSound()
@@ -20,11 +21,15 @@ public class KumaFootsteps : MonoBehaviour
     void runSound()
     {
         playSound(1);
+        float damage = 5 / Vector3.Distance(transform.position, kid.position);
+        kid.GetComponent<KidController>().getSleepDamage(damage);
     }
 
     void landingSound()
     {
         playSound(2);
+        float damage = 10 / Vector3.Distance(transform.position, kid.position);
+        kid.GetComponent<KidController>().getSleepDamage(damage);
     }
 
     void playSound(int movementType)

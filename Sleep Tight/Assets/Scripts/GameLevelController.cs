@@ -128,7 +128,12 @@ public class GameLevelController : MonoBehaviour
 
     void setupPoltergeistSpawns()
     {
-        //TODO
+        for(int i = 0; i < PoltergeistNumber; i++)
+        {
+            float nextPoltergeistSpawnTimes = Random.Range(0, (safeTime / (PoltergeistNumber * 2))) + (safeTime / PoltergeistNumber) * i + 30f;
+            PoltergeistSpawnTimes[PoltergeistNumber - i - 1] = nextPoltergeistSpawnTimes;
+            //Debug.Log(nextPoltergeistSpawnTimes);
+        }
     }
 
     void setupStinkerSpawns()
@@ -148,7 +153,12 @@ public class GameLevelController : MonoBehaviour
             //TODO better mathematical model for choosing next spawnpoint
 
         //Poltergeist spawn controll
-        //TODO
+        if(PoltergeistSpawnOrder < PoltergeistSpawnTimes.Length)
+            if(timeToEnd < PoltergeistSpawnTimes[PoltergeistSpawnOrder])
+            {
+                spawnPoltergeist();
+                PoltergeistSpawnOrder++;
+            }
 
         //Stinker spawn controll
         //TODO
@@ -164,7 +174,9 @@ public class GameLevelController : MonoBehaviour
 
     void spawnPoltergeist()
     {
-        //TODO
+        int n = PoltergeistSpawnpoints.Length;
+        int randomPoint = Random.Range(0, n);
+        PoltergeistSpawnpoints[randomPoint].GetComponent<PoltergeistSpawn>().spawn();
     }
 
     void spawnStinker()
@@ -177,6 +189,7 @@ public class GameLevelController : MonoBehaviour
         if(timeToEnd < 1f) endGameMessage = "win";
         else if(player.GetComponent<PlayerStats>().getHealth() < 0f) endGameMessage = "dead";
         else if(wokenUp >= 3) endGameMessage = "woken";
+        else if(kid.GetComponent<KidController>().getSawMonster()) endGameMessage = "sawMonster";
 
         if(endGameMessage != "-")
             gameEnded = true;
@@ -235,6 +248,8 @@ public class GameLevelController : MonoBehaviour
                     failedText.text = "You've been killed";
                 else if(endGameMessage == "woken")
                     failedText.text = "The kid woke up too many times";
+                else if(endGameMessage == "sawMonster")
+                    failedText.text = "The kid saw the monster";
             }
 
             scoreOpen = false;

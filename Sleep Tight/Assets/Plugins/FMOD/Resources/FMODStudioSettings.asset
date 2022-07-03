@@ -429,8 +429,8 @@ MonoBehaviour:
   sourceProjectPath: ../ST_fmod/st_fmod/st_fmod.fspro
   sourceBankPath: ../ST_fmod/st_fmod/Build
   SourceBankPathUnformatted: 
-  BankRefreshCooldown: 5
-  ShowBankRefreshWindow: 1
+  BankRefreshCooldown: 1
+  ShowBankRefreshWindow: 0
   AutomaticEventLoading: 1
   BankLoadType: 0
   AutomaticSampleLoading: 0

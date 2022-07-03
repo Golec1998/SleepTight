@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{63f84203-5539-439f-a074-fd4390d75552}">
+		<property name="assetPath">
+			<value>Sfx/Kid/Scream/Scream3.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.7402040816326529</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{1fe246e7-ea45-4a8b-8d46-2020947b86eb}</destination>
+		</relationship>
+	</object>
+</objects>

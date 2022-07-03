@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
+using FMOD.Studio;
 
 public class KidController : MonoBehaviour
 {
@@ -13,6 +15,12 @@ public class KidController : MonoBehaviour
     public float sleepRegenerateRate = 1f;
     public float comfortRegenerateRate = 1f;
     bool canRegenerate = true;
+
+    [Space]
+    public float checkSurroundingsRange = 2f;
+    public LayerMask enemyLayers;
+    bool sawMonster = false;
+    string eventPath = "event:/Kid/Scream";
 
     int wokenUp = 0;
 
@@ -56,9 +64,18 @@ public class KidController : MonoBehaviour
 
     void checkSurroundings()
     {
-        comfort = 0;
-        sleep = 0;
-        //TODO
+        if(!sawMonster)
+        {
+            comfort = 0;
+            sleep = 0;
+            
+            Collider[] enemies = Physics.OverlapSphere(transform.position, checkSurroundingsRange, enemyLayers);
+            if(enemies.Length > 0)
+            {
+                sawMonster = true;
+                playScream();
+            }
+        }
     }
 
     void wakeUp()
@@ -73,8 +90,23 @@ public class KidController : MonoBehaviour
         }, 3f);
     }
 
+    void playScream()
+    {
+        EventInstance Sound = RuntimeManager.CreateInstance(eventPath);
+        RuntimeManager.AttachInstanceToGameObject(Sound, transform, GetComponent<Rigidbody>());
+
+        Sound.start();
+        Sound.release();
+    }
+
     public float getSleep() { return sleep; }
     public float getComfort() { return comfort; }
     public float getWokenUpCount() { return wokenUp; }
+    public bool getSawMonster() { return sawMonster; }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, checkSurroundingsRange);
+    }
 
 }
