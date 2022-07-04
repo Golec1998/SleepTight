@@ -6727,11 +6727,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1584763946877996490, guid: 0a1e2da134a86c045846cc508e739827, type: 3}
   m_PrefabInstance: {fileID: 226624203}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &226624205 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5096556971046554918, guid: 0a1e2da134a86c045846cc508e739827, type: 3}
-  m_PrefabInstance: {fileID: 226624203}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &250774404
 GameObject:
   m_ObjectHideFlags: 0
@@ -9100,10 +9095,9 @@ MonoBehaviour:
   - {fileID: 974081689}
   - {fileID: 1657310633}
   - {fileID: 468115003}
-  TallGuysNumber: 2
+  TallGuysNumber: 0
   PoltergeistSpawnpoints:
   - {fileID: 1829503816}
-  - {fileID: 226624205}
   PoltergeistNumber: 1
   StinkerSpawnpoints: []
   StinkerNumber: 0
@@ -11841,7 +11835,7 @@ MonoBehaviour:
   m_PointlightHDType: 1
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 6260.413
+  m_Intensity: 11793.126
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -11955,7 +11949,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 3.7335505
+  m_Intensity: 7.0331197
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -13056,7 +13050,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1008330628}
-  m_LocalRotation: {x: 0.053965945, y: -0.30263206, z: 0.017165674, w: 0.9514236}
+  m_LocalRotation: {x: 0.053965963, y: -0.30263206, z: 0.017165681, w: 0.9514236}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
